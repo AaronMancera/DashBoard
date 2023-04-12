@@ -6,6 +6,7 @@ import 'package:niveles_formacion/view/dashboard_item/dashboard_item_viewmodel.d
 import 'package:stacked/stacked.dart';
 import 'package:syncfusion_flutter_barcodes/barcodes.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
+import 'package:syncfusion_flutter_datepicker/datepicker.dart';
 import 'package:syncfusion_flutter_gauges/gauges.dart';
 
 class DashboardItemView extends StackedView<DashboardItemViewModel> {
@@ -50,6 +51,14 @@ class DashboardItemView extends StackedView<DashboardItemViewModel> {
               _SfPyramidChart(
                 viewModel: viewModel,
               ),
+            if (item.identifier == 'FunnelChart1')
+              _SfFunnelChart(
+                viewModel: viewModel,
+              ),
+            if (item.identifier == 'DateRangePicker1')
+              _SfDateRangePicker(
+                viewModel: viewModel,
+              ),
           ],
         ),
       ),
@@ -59,6 +68,56 @@ class DashboardItemView extends StackedView<DashboardItemViewModel> {
   @override
   DashboardItemViewModel viewModelBuilder(BuildContext context) =>
       DashboardItemViewModel();
+}
+
+//SfDateRangePicker
+class _SfDateRangePicker extends StatelessWidget {
+  final DashboardItemViewModel viewModel;
+  const _SfDateRangePicker({
+    super.key,
+    required this.viewModel,
+  });
+
+  void onSelectionChanged(DateRangePickerSelectionChangedArgs args) {
+    viewModel.updateDiaSeleccionado(
+        '${args.value.day} - ${args.value.month} - ${args.value.year}');
+  }
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: [
+        Text('El dia selecionado: ${viewModel.diaSeleccionado}'),
+        SfDateRangePicker(
+          onSelectionChanged: onSelectionChanged,
+          view: DateRangePickerView.month,
+          showTodayButton: true,
+          enableMultiView: true,
+        ),
+      ],
+    );
+  }
+}
+
+//FunnelChart1
+class _SfFunnelChart extends StatelessWidget {
+  final DashboardItemViewModel viewModel;
+
+  const _SfFunnelChart({
+    super.key,
+    required this.viewModel,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return SfFunnelChart(
+        // Enables the legend
+        legend: Legend(isVisible: true),
+        series: FunnelSeries<ChartData, String>(
+          dataSource: viewModel.valoresChart,
+          xValueMapper: (ChartData data, _) => data.x,
+          yValueMapper: (ChartData data, _) => data.y,
+        ));
+  }
 }
 
 //PyramidChart

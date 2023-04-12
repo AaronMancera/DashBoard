@@ -21,7 +21,7 @@ class DashboardItemViewModel extends BaseViewModel {
   //QR
   final String _url = 'https://www.procisa.es/';
   String get url => _url;
-  //All Chart 
+  //All Chart
   final List<ChartData> _valoresChart = [
     ChartData('Jan', 35),
     ChartData('Feb', 28),
@@ -30,7 +30,14 @@ class DashboardItemViewModel extends BaseViewModel {
     ChartData('May', 40)
   ];
   List<ChartData> get valoresChart => _valoresChart;
-  
+  //SfDateRangePicker
+  String _diaSeleccionado = '';
+  String get diaSeleccionado => _diaSeleccionado;
+  void updateDiaSeleccionado(String value) {
+    _diaSeleccionado = value;
+    notifyListeners();
+  }
+
   void update(double value) {
     _sliderValue = value;
     //Este metodo es de stack y lo que hace es un setState, es decir, reconstruye la vista
