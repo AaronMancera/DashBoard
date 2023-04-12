@@ -11,21 +11,21 @@ class DashboardViewModel extends BaseViewModel {
         identifier: "Gauge1",
         height: 1,
         width: 8,
-        panelOptions: DashboardPanelItemLevelOptions(uid: 'optionsIdentifier')
-        ),
-        DashboardPanelItemLevel(
-        identifier: "Gauge2",
-        height: 1,
-        width: 8,
-        panelOptions: DashboardPanelItemLevelOptions(uid: 'optionsIdentifier')
-        )
-        
-  ]
-  );
+        panelOptions: DashboardPanelItemLevelOptions(uid: 'optionsIdentifier')),
+    DashboardPanelItemLevel(
+        identifier: "Qr1",
+        height: 2,
+        width: 1,
+        panelOptions: DashboardPanelItemLevelOptions(uid: 'optionsIdentifier')),
+    DashboardPanelItemLevel(
+        identifier: "CartesianChart1",
+        height: 2,
+        width: 2,
+        panelOptions: DashboardPanelItemLevelOptions(uid: 'optionsIdentifier')),
+  ]);
 
   void changeEditMode() {
     dashboardItemController.isEditing = !dashboardItemController.isEditing;
     notifyListeners();
   }
-  
 }
