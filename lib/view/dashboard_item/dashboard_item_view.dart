@@ -38,7 +38,10 @@ class DashboardItemView extends StackedView<DashboardItemViewModel> {
               _SfBarcodeGenerator(
                 viewModel: viewModel,
               ),
-            if (item.identifier == 'CartesianChart1') const _SfCartesianChart(),
+            if (item.identifier == 'CartesianChart1')
+              _SfCartesianChart(
+                viewModel: viewModel,
+              ),
           ],
         ),
       ),
@@ -51,28 +54,30 @@ class DashboardItemView extends StackedView<DashboardItemViewModel> {
 }
 
 class _SfCartesianChart extends StatelessWidget {
+  final DashboardItemViewModel viewModel;
   const _SfCartesianChart({
     super.key,
+    required this.viewModel,
   });
 
   @override
   Widget build(BuildContext context) {
     return SfCartesianChart(
+        //leyenda en la grafica
+        legend: Legend(isVisible: true),
+        //borde de la grafica
+        borderColor: viewModel.color,
         // Initialize category axis
         primaryXAxis: CategoryAxis(),
         series: <ChartSeries>[
           // Initialize line series
           LineSeries<ChartData, String>(
-              dataSource: [
-                // Bind data source
-                ChartData('Jan', 35),
-                ChartData('Feb', 28),
-                ChartData('Mar', 34),
-                ChartData('Apr', 32),
-                ChartData('May', 40)
-              ],
-              xValueMapper: (ChartData data, _) => data.x,
-              yValueMapper: (ChartData data, _) => data.y)
+            dataSource: viewModel.valoresCartesianChart,
+            xValueMapper: (ChartData data, _) => data.x,
+            yValueMapper: (ChartData data, _) => data.y,
+            dataLabelSettings: const DataLabelSettings(isVisible: true),
+            color: viewModel.color,
+          )
         ]);
   }
 }

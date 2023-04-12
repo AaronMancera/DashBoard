@@ -21,7 +21,16 @@ class DashboardItemViewModel extends BaseViewModel {
   //QR
   final String _url = 'https://www.procisa.es/';
   String get url => _url;
-
+  //CartesianChart
+  final List<ChartData> _valoresCartesianChart = [
+    ChartData('Jan', 35),
+    ChartData('Feb', 28),
+    ChartData('Mar', 34),
+    ChartData('Apr', 32),
+    ChartData('May', 40)
+  ];
+  List<ChartData> get valoresCartesianChart => _valoresCartesianChart;
+  
   void update(double value) {
     _sliderValue = value;
     //Este metodo es de stack y lo que hace es un setState, es decir, reconstruye la vista
@@ -36,7 +45,7 @@ class DashboardItemViewModel extends BaseViewModel {
 
 //CartesianChart
 class ChartData {
-        ChartData(this.x, this.y);
-        final String x;
-        final double? y;
-    }
+  ChartData(this.x, this.y);
+  final String x;
+  final double? y;
+}
