@@ -59,6 +59,17 @@ class DashboardItemView extends StackedView<DashboardItemViewModel> {
               _SfDateRangePicker(
                 viewModel: viewModel,
               ),
+            if (item.identifier == 'RadialGauge1')
+              Column(
+                children: [
+                  _SfLinearGauge(
+                    viewModel: viewModel,
+                  ),
+                  _SfRadialGauge(
+                    viewModel: viewModel,
+                  ),
+                ],
+              ),
           ],
         ),
       ),
@@ -68,6 +79,51 @@ class DashboardItemView extends StackedView<DashboardItemViewModel> {
   @override
   DashboardItemViewModel viewModelBuilder(BuildContext context) =>
       DashboardItemViewModel();
+}
+
+//RadialGauge
+class _SfRadialGauge extends StatelessWidget {
+  final DashboardItemViewModel viewModel;
+
+  const _SfRadialGauge({
+    super.key,
+    required this.viewModel,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return SfRadialGauge(axes: <RadialAxis>[
+      RadialAxis(minimum: 0, maximum: 100, ranges: <GaugeRange>[
+        GaugeRange(
+            startValue: 0,
+            endValue: 40,
+            color: Colors.green,
+            startWidth: 10,
+            endWidth: 10),
+        GaugeRange(
+            startValue: 40,
+            endValue: 80,
+            color: Colors.orange,
+            startWidth: 10,
+            endWidth: 10),
+        GaugeRange(
+            startValue: 80,
+            endValue: 100,
+            color: Colors.red,
+            startWidth: 10,
+            endWidth: 10)
+      ], pointers: <GaugePointer>[
+        NeedlePointer(value: viewModel.sliderValue)
+      ], annotations: <GaugeAnnotation>[
+        GaugeAnnotation(
+            widget: Text(viewModel.sliderValue.toStringAsFixed(2),
+                style:
+                    const TextStyle(fontSize: 25, fontWeight: FontWeight.bold)),
+            angle: 90,
+            positionFactor: 0.5)
+      ])
+    ]);
+  }
 }
 
 //SfDateRangePicker
@@ -82,6 +138,7 @@ class _SfDateRangePicker extends StatelessWidget {
     viewModel.updateDiaSeleccionado(
         '${args.value.day} - ${args.value.month} - ${args.value.year}');
   }
+
   @override
   Widget build(BuildContext context) {
     return Column(

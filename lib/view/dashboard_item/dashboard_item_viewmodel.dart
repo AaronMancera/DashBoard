@@ -40,8 +40,7 @@ class DashboardItemViewModel extends BaseViewModel {
 
   void update(double value) {
     _sliderValue = value;
-    //Este metodo es de stack y lo que hace es un setState, es decir, reconstruye la vista
-    rebuildUi();
+    notifyListeners();
   }
 
   void changeColor(int value) {
