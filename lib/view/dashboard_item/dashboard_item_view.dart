@@ -45,7 +45,11 @@ class DashboardItemView extends StackedView<DashboardItemViewModel> {
             if (item.identifier == 'CircularChart1')
               _SfCircularChart(
                 viewModel: viewModel,
-              )
+              ),
+            if (item.identifier == 'PyramidChart1')
+              _SfPyramidChart(
+                viewModel: viewModel,
+              ),
           ],
         ),
       ),
@@ -55,6 +59,30 @@ class DashboardItemView extends StackedView<DashboardItemViewModel> {
   @override
   DashboardItemViewModel viewModelBuilder(BuildContext context) =>
       DashboardItemViewModel();
+}
+
+//PyramidChart
+class _SfPyramidChart extends StatelessWidget {
+  final DashboardItemViewModel viewModel;
+
+  const _SfPyramidChart({
+    super.key,
+    required this.viewModel,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return SfPyramidChart(
+        // Enables the legend
+        legend: Legend(isVisible: true),
+        series: PyramidSeries<ChartData, String>(
+          dataSource: viewModel.valoresChart,
+          xValueMapper: (ChartData data, _) => data.x,
+          yValueMapper: (ChartData data, _) => data.y,
+          // Render the data label
+          dataLabelSettings: const DataLabelSettings(isVisible: true),
+        ));
+  }
 }
 
 //CircularChart
@@ -74,7 +102,7 @@ class _SfCircularChart extends StatelessWidget {
         series: <CircularSeries>[
           // Render pie chart
           PieSeries<ChartData, String>(
-              dataSource: viewModel.valoresCartesianChart,
+              dataSource: viewModel.valoresChart,
               xValueMapper: (ChartData data, _) => data.x,
               yValueMapper: (ChartData data, _) => data.y,
               // Render the data label
@@ -103,7 +131,7 @@ class _SfCartesianChart extends StatelessWidget {
         series: <ChartSeries>[
           // Initialize line series
           LineSeries<ChartData, String>(
-            dataSource: viewModel.valoresCartesianChart,
+            dataSource: viewModel.valoresChart,
             xValueMapper: (ChartData data, _) => data.x,
             yValueMapper: (ChartData data, _) => data.y,
             dataLabelSettings: const DataLabelSettings(isVisible: true),

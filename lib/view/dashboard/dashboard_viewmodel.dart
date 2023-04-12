@@ -27,6 +27,11 @@ class DashboardViewModel extends BaseViewModel {
         height: 2,
         width: 2,
         panelOptions: DashboardPanelItemLevelOptions(uid: 'optionsIdentifier')),
+    DashboardPanelItemLevel(
+        identifier: "PyramidChart1",
+        height: 2,
+        width: 2,
+        panelOptions: DashboardPanelItemLevelOptions(uid: 'optionsIdentifier')),
   ]);
 
   void changeEditMode() {

@@ -22,14 +22,14 @@ class DashboardItemViewModel extends BaseViewModel {
   final String _url = 'https://www.procisa.es/';
   String get url => _url;
   //All Chart 
-  final List<ChartData> _valoresCartesianChart = [
+  final List<ChartData> _valoresChart = [
     ChartData('Jan', 35),
     ChartData('Feb', 28),
     ChartData('Mar', 34),
     ChartData('Apr', 32),
     ChartData('May', 40)
   ];
-  List<ChartData> get valoresCartesianChart => _valoresCartesianChart;
+  List<ChartData> get valoresChart => _valoresChart;
   
   void update(double value) {
     _sliderValue = value;
