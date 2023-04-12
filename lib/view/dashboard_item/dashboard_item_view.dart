@@ -42,6 +42,10 @@ class DashboardItemView extends StackedView<DashboardItemViewModel> {
               _SfCartesianChart(
                 viewModel: viewModel,
               ),
+            if (item.identifier == 'CircularChart1')
+              _SfCircularChart(
+                viewModel: viewModel,
+              )
           ],
         ),
       ),
@@ -53,6 +57,33 @@ class DashboardItemView extends StackedView<DashboardItemViewModel> {
       DashboardItemViewModel();
 }
 
+//CircularChart
+class _SfCircularChart extends StatelessWidget {
+  final DashboardItemViewModel viewModel;
+
+  const _SfCircularChart({
+    super.key,
+    required this.viewModel,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return SfCircularChart(
+        // Enables the legend
+        legend: Legend(isVisible: true),
+        series: <CircularSeries>[
+          // Render pie chart
+          PieSeries<ChartData, String>(
+              dataSource: viewModel.valoresCartesianChart,
+              xValueMapper: (ChartData data, _) => data.x,
+              yValueMapper: (ChartData data, _) => data.y,
+              // Render the data label
+              dataLabelSettings: const DataLabelSettings(isVisible: true))
+        ]);
+  }
+}
+
+//CartesianChart
 class _SfCartesianChart extends StatelessWidget {
   final DashboardItemViewModel viewModel;
   const _SfCartesianChart({

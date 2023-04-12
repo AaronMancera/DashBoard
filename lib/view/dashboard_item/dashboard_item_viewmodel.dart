@@ -21,7 +21,7 @@ class DashboardItemViewModel extends BaseViewModel {
   //QR
   final String _url = 'https://www.procisa.es/';
   String get url => _url;
-  //CartesianChart
+  //All Chart 
   final List<ChartData> _valoresCartesianChart = [
     ChartData('Jan', 35),
     ChartData('Feb', 28),
