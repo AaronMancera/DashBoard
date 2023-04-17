@@ -36,6 +36,7 @@ class DashboardItemView extends StackedView<DashboardItemViewModel> {
                 viewModel: viewModel,
               ),
             if (item.identifier == 'Qr1')
+            
               _SfBarcodeGenerator(
                 viewModel: viewModel,
               ),
@@ -270,6 +271,7 @@ class _SfBarcodeGenerator extends StatelessWidget {
     return SfBarcodeGenerator(
         value: viewModel.url,
         showValue: true,
+        
         textSpacing: 15,
         symbology: QRCode());
   }

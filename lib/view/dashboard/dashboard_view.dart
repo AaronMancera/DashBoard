@@ -12,9 +12,24 @@ class DashboardView extends StackedView<DashboardViewModel> {
   Widget builder(
       BuildContext context, DashboardViewModel viewModel, Widget? child) {
     return Scaffold(
-        floatingActionButton: FloatingActionButton(
-            child: const Icon(Icons.edit),
-            onPressed: () => viewModel.changeEditMode()),
+        floatingActionButton: Stack(
+          children: [
+            Positioned(
+              bottom: 10.0,
+              right: 80.0,
+              child: FloatingActionButton(
+                  child: const Icon(Icons.add),
+                  onPressed: () => viewModel.addGauge()),
+            ),
+            Positioned(
+              bottom: 10.0,
+              right: 10.0,
+              child: FloatingActionButton(
+                  child: const Icon(Icons.edit),
+                  onPressed: () => viewModel.changeEditMode()),
+            )
+          ],
+        ),
         body: Center(
             child: Dashboard<DashboardPanelItem>(
                 editModeSettings: EditModeSettings(resizeCursorSide: 10),
