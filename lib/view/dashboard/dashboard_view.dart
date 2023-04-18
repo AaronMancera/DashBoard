@@ -5,6 +5,8 @@ import 'package:niveles_formacion/view/dashboard_item/dashboard_item_view.dart';
 import 'package:stacked/stacked.dart';
 import 'package:dashboard/dashboard.dart';
 
+import '../dashboard_widget/dropdown_button.dart';
+
 class DashboardView extends StackedView<DashboardViewModel> {
   const DashboardView({super.key});
 
@@ -52,7 +54,7 @@ class DashboardView extends StackedView<DashboardViewModel> {
                               builder: (context) => AlertDialog(
                                     title: Text('Selector de widget'),
                                     //TODO:Selector
-                                    content: Text('Prueba'),
+                                    content: DropdownButtonWidget(),
                                     //TODO: Realizar la accion de añadir
                                     actions: [
                                       TextButton(
