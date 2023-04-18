@@ -9,13 +9,14 @@ class DashboardViewModel extends BaseViewModel {
   final DashboardItemController<DashboardPanelItem> dashboardItemController =
       DashboardItemController(items: [
     DashboardPanelItemLevel(
-        identifier: "Qr1",
+        identifier: "Qr",
         height: 5,
         width: 3,
+        //Para el valor minimo de alto y ancho es desde la clase DashboardPanelItemLevel y DashboardPanelItem
+        minHeight: 4,
+        minWidth: 2,
         panelOptions: DashboardPanelItemLevelOptions(
           uid: 'optionsIdentifier',
-          minHeight: 4,
-          minWidth: 2,
         ))
   ]);
   // final DashboardItemController<DashboardPanelItem> dashboardItemController =
@@ -68,13 +69,31 @@ class DashboardViewModel extends BaseViewModel {
   }
 
   void addGauge() {
-    dashboardItemController.add(DashboardPanelItemLevel(
-        identifier: "Gauge1",
+    DashboardPanelItemLevel gauge = DashboardPanelItemLevel(
+        identifier: "Gauge",
         height: 1,
         width: 8,
-        panelOptions:
-            DashboardPanelItemLevelOptions(uid: 'optionsIdentifier')));
+        minWidth: 4,
+        panelOptions: DashboardPanelItemLevelOptions(uid: 'optionsIdentifier'));
+    if (dashboardItemController.items.contains(gauge.identifier)) {
+      // Ya tiene el item dentro
+      return;
+    }
+    dashboardItemController.add(gauge);
+    notifyListeners();
+  }
 
+  void addCartesianChart() {
+    DashboardPanelItemLevel cartesianChart = DashboardPanelItemLevel(
+        identifier: "CartesianChart",
+        height: 2,
+        width: 2,
+        panelOptions: DashboardPanelItemLevelOptions(uid: 'optionsIdentifier'));
+    if (dashboardItemController.items.contains(cartesianChart.identifier)) {
+      // Ya tiene el item dentro
+      return;
+    }
+    dashboardItemController.add(cartesianChart);
     notifyListeners();
   }
 }

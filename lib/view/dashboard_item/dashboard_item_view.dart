@@ -9,6 +9,9 @@ import 'package:syncfusion_flutter_charts/charts.dart';
 import 'package:syncfusion_flutter_datepicker/datepicker.dart';
 import 'package:syncfusion_flutter_gauges/gauges.dart';
 
+import '../dashboard_item_widget/barcode_generator.dart';
+import '../dashboard_item_widget/linear_gauge.dart';
+
 class DashboardItemView extends StackedView<DashboardItemViewModel> {
   const DashboardItemView(this.item, {super.key});
 
@@ -17,6 +20,11 @@ class DashboardItemView extends StackedView<DashboardItemViewModel> {
   @override
   Widget builder(
       BuildContext context, DashboardItemViewModel viewModel, Widget? child) {
+    // TODO: Meter todos los widgets privados en sus clases correspondientes para luego gestionarlo con una lista
+    Map<String, Widget> widgets = {
+      'Qr': BarcodeGenerator(viewModel: viewModel,),
+      'Gauge': LinearGauge(viewModel: viewModel)};
+
     return Scaffold(
       floatingActionButton: FloatingActionButton(
           child: const Icon(Icons.color_lens),
@@ -31,16 +39,16 @@ class DashboardItemView extends StackedView<DashboardItemViewModel> {
             const SizedBox(
               height: 10,
             ),
-            if (item.identifier == 'Gauge1')
-              _SfLinearGauge(
-                viewModel: viewModel,
+            if (item.identifier == 'Qr')
+              Container(
+                child: widgets[item.identifier],
               ),
-            if (item.identifier == 'Qr1')
-            
-              _SfBarcodeGenerator(
-                viewModel: viewModel,
+            if (item.identifier == 'Gauge')
+              Container(
+                child: widgets[item.identifier],
               ),
-            if (item.identifier == 'CartesianChart1')
+
+            if (item.identifier == 'CartesianChart')
               _SfCartesianChart(
                 viewModel: viewModel,
               ),
@@ -63,8 +71,8 @@ class DashboardItemView extends StackedView<DashboardItemViewModel> {
             if (item.identifier == 'RadialGauge1')
               Column(
                 children: [
-                  _SfLinearGauge(
-                    viewModel: viewModel,
+                  Container(
+                    child: widgets["Gauge"],
                   ),
                   _SfRadialGauge(
                     viewModel: viewModel,
@@ -258,48 +266,3 @@ class _SfCartesianChart extends StatelessWidget {
   }
 }
 
-//QR
-class _SfBarcodeGenerator extends StatelessWidget {
-  final DashboardItemViewModel viewModel;
-  const _SfBarcodeGenerator({
-    super.key,
-    required this.viewModel,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return SfBarcodeGenerator(
-        value: viewModel.url,
-        showValue: true,
-        
-        textSpacing: 15,
-        symbology: QRCode());
-  }
-}
-
-//Gauge
-class _SfLinearGauge extends StatelessWidget {
-  final DashboardItemViewModel viewModel;
-  const _SfLinearGauge({
-    super.key,
-    required this.viewModel,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return SfLinearGauge(
-      markerPointers: [
-        LinearShapePointer(
-          value: viewModel.sliderValue,
-          onChanged: (value) => viewModel.update(value),
-        )
-      ],
-      barPointers: [
-        LinearBarPointer(
-          value: viewModel.sliderValue,
-          color: viewModel.color,
-        )
-      ],
-    );
-  }
-}

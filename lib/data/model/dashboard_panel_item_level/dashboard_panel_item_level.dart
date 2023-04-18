@@ -5,5 +5,8 @@ class DashboardPanelItemLevel extends DashboardPanelItem {
       {required super.width,
       required super.height,
       required super.identifier,
-      required super.panelOptions});
+      required super.panelOptions,
+      // Alto y ancho minimo opcional
+      super.minWidth,
+      super.minHeight});
 }

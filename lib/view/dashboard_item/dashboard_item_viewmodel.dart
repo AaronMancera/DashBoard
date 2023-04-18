@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
 
+import '../dashboard_item_widget/LinearGauge.dart';
+
 class DashboardItemViewModel extends BaseViewModel {
+  //Lista de widgets
+  List<Type> widgets=[];
   //Gauge
   double _sliderValue = 0;
   double get sliderValue => _sliderValue;
