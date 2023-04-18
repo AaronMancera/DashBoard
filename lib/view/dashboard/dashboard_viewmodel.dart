@@ -17,7 +17,8 @@ class DashboardViewModel extends BaseViewModel {
         minWidth: 2,
         panelOptions: DashboardPanelItemLevelOptions(
           uid: 'optionsIdentifier',
-        ))
+        )),
+        
   ]);
   // final DashboardItemController<DashboardPanelItem> dashboardItemController =
   //     DashboardItemController(items: [
@@ -97,10 +98,11 @@ class DashboardViewModel extends BaseViewModel {
   }
 
   void addCartesianChart() {
+    
     DashboardPanelItemLevel cartesianChart = DashboardPanelItemLevel(
-        identifier: "CartesianChart",
-        height: 2,
-        width: 2,
+        identifier: "Cartesian",
+        height: 4,
+        width: 5,
         minHeight: 4,
         minWidth: 5,
         panelOptions: DashboardPanelItemLevelOptions(uid: 'optionsIdentifier'));
@@ -109,6 +111,22 @@ class DashboardViewModel extends BaseViewModel {
       return;
     }
     dashboardItemController.add(cartesianChart);
+    notifyListeners();
+  }
+
+  void addCircularChart() {
+    DashboardPanelItemLevel circularChart = DashboardPanelItemLevel(
+        identifier: "Circular",
+        height: 3,
+        width: 8,
+        minWidth: 4,
+        minHeight: 3,
+        panelOptions: DashboardPanelItemLevelOptions(uid: 'optionsIdentifier'));
+    if (dashboardItemController.items.contains(circularChart.identifier)) {
+      // Ya tiene el item dentro
+      return;
+    }
+    dashboardItemController.add(circularChart);
     notifyListeners();
   }
 }

@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:niveles_formacion/view/alert_dialog/alert_dialog_view_model.dart';
-import 'package:niveles_formacion/view/dashboard/dashboard_viewmodel.dart';
 import 'package:stacked/stacked.dart';
 
 class AlertDialogView extends StackedView<AlertDialogViewModel> {
@@ -31,7 +30,6 @@ class AlertDialogView extends StackedView<AlertDialogViewModel> {
           );
         }).toList(),
       ),
-      //TODO: Realizar la accion de añadir
       actions: [
         TextButton(
             child: Text("Aceptar"),
