@@ -3,13 +3,18 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:niveles_formacion/data/model/dashboard_panel_item/dashboard_panel_item.dart';
 import 'package:niveles_formacion/view/dashboard_item/dashboard_item_viewmodel.dart';
+import 'package:niveles_formacion/view/dashboard_item_widget/circular_chart.dart';
+import 'package:niveles_formacion/view/dashboard_item_widget/date_range_picker.dart';
+import 'package:niveles_formacion/view/dashboard_item_widget/funnel_chart.dart';
+import 'package:niveles_formacion/view/dashboard_item_widget/pyramid_chart.dart';
+import 'package:niveles_formacion/view/dashboard_item_widget/radial_gauge.dart';
 import 'package:stacked/stacked.dart';
-import 'package:syncfusion_flutter_barcodes/barcodes.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
 import 'package:syncfusion_flutter_datepicker/datepicker.dart';
 import 'package:syncfusion_flutter_gauges/gauges.dart';
 
 import '../dashboard_item_widget/barcode_generator.dart';
+import '../dashboard_item_widget/cartesian_chart.dart';
 import '../dashboard_item_widget/linear_gauge.dart';
 
 class DashboardItemView extends StackedView<DashboardItemViewModel> {
@@ -20,10 +25,30 @@ class DashboardItemView extends StackedView<DashboardItemViewModel> {
   @override
   Widget builder(
       BuildContext context, DashboardItemViewModel viewModel, Widget? child) {
-    // TODO: Meter todos los widgets privados en sus clases correspondientes para luego gestionarlo con una lista
     Map<String, Widget> widgets = {
-      'Qr': BarcodeGenerator(viewModel: viewModel,),
-      'Gauge': LinearGauge(viewModel: viewModel)};
+      'Qr': BarcodeGenerator(
+        viewModel: viewModel,
+      ),
+      'Gauge': LinearGauge(viewModel: viewModel),
+      'Cartesian': CartesianChart(
+        viewModel: viewModel,
+      ),
+      'Circular': CircularChart(
+        viewModel: viewModel,
+      ),
+      'Pyramid': PyramidChart(
+        viewModel: viewModel,
+      ),
+      'Funnel': FunnelChart(
+        viewModel: viewModel,
+      ),
+      'DateRangePicker': DateRangePicker(
+        viewModel: viewModel,
+      ),
+      'RadialGauge': RadialGauge(
+        viewModel: viewModel,
+      )
+    };
 
     return Scaffold(
       floatingActionButton: FloatingActionButton(
@@ -39,6 +64,7 @@ class DashboardItemView extends StackedView<DashboardItemViewModel> {
             const SizedBox(
               height: 10,
             ),
+            //Muestra el contenido dependiendo del identificador
             if (item.identifier == 'Qr')
               Container(
                 child: widgets[item.identifier],
@@ -48,34 +74,34 @@ class DashboardItemView extends StackedView<DashboardItemViewModel> {
                 child: widgets[item.identifier],
               ),
 
-            if (item.identifier == 'CartesianChart')
-              _SfCartesianChart(
-                viewModel: viewModel,
+            if (item.identifier == 'Cartesian')
+              Container(
+                child: widgets[item.identifier],
               ),
-            if (item.identifier == 'CircularChart1')
-              _SfCircularChart(
-                viewModel: viewModel,
+            if (item.identifier == 'Circular')
+              Container(
+                child: widgets[item.identifier],
               ),
-            if (item.identifier == 'PyramidChart1')
-              _SfPyramidChart(
-                viewModel: viewModel,
+            if (item.identifier == 'Pyramid')
+              Container(
+                child: widgets[item.identifier],
               ),
-            if (item.identifier == 'FunnelChart1')
-              _SfFunnelChart(
-                viewModel: viewModel,
+            if (item.identifier == 'Funnel')
+              Container(
+                child: widgets[item.identifier],
               ),
-            if (item.identifier == 'DateRangePicker1')
-              _SfDateRangePicker(
-                viewModel: viewModel,
+            if (item.identifier == 'DateRangePicker')
+              Container(
+                child: widgets[item.identifier],
               ),
-            if (item.identifier == 'RadialGauge1')
+            if (item.identifier == 'RadialGauge')
               Column(
                 children: [
                   Container(
                     child: widgets["Gauge"],
                   ),
-                  _SfRadialGauge(
-                    viewModel: viewModel,
+                  Container(
+                    child: widgets[item.identifier],
                   ),
                 ],
               ),
@@ -89,180 +115,3 @@ class DashboardItemView extends StackedView<DashboardItemViewModel> {
   DashboardItemViewModel viewModelBuilder(BuildContext context) =>
       DashboardItemViewModel();
 }
-
-//RadialGauge
-class _SfRadialGauge extends StatelessWidget {
-  final DashboardItemViewModel viewModel;
-
-  const _SfRadialGauge({
-    super.key,
-    required this.viewModel,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return SfRadialGauge(axes: <RadialAxis>[
-      RadialAxis(minimum: 0, maximum: 100, ranges: <GaugeRange>[
-        GaugeRange(
-            startValue: 0,
-            endValue: 40,
-            color: Colors.green,
-            startWidth: 10,
-            endWidth: 10),
-        GaugeRange(
-            startValue: 40,
-            endValue: 80,
-            color: Colors.orange,
-            startWidth: 10,
-            endWidth: 10),
-        GaugeRange(
-            startValue: 80,
-            endValue: 100,
-            color: Colors.red,
-            startWidth: 10,
-            endWidth: 10)
-      ], pointers: <GaugePointer>[
-        NeedlePointer(value: viewModel.sliderValue)
-      ], annotations: <GaugeAnnotation>[
-        GaugeAnnotation(
-            widget: Text(viewModel.sliderValue.toStringAsFixed(2),
-                style:
-                    const TextStyle(fontSize: 25, fontWeight: FontWeight.bold)),
-            angle: 90,
-            positionFactor: 0.5)
-      ])
-    ]);
-  }
-}
-
-//SfDateRangePicker
-class _SfDateRangePicker extends StatelessWidget {
-  final DashboardItemViewModel viewModel;
-  const _SfDateRangePicker({
-    super.key,
-    required this.viewModel,
-  });
-
-  void onSelectionChanged(DateRangePickerSelectionChangedArgs args) {
-    viewModel.updateDiaSeleccionado(
-        '${args.value.day} - ${args.value.month} - ${args.value.year}');
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return Column(
-      children: [
-        Text('El dia selecionado: ${viewModel.diaSeleccionado}'),
-        SfDateRangePicker(
-          onSelectionChanged: onSelectionChanged,
-          view: DateRangePickerView.month,
-          showTodayButton: true,
-          enableMultiView: true,
-        ),
-      ],
-    );
-  }
-}
-
-//FunnelChart1
-class _SfFunnelChart extends StatelessWidget {
-  final DashboardItemViewModel viewModel;
-
-  const _SfFunnelChart({
-    super.key,
-    required this.viewModel,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return SfFunnelChart(
-        // Enables the legend
-        legend: Legend(isVisible: true),
-        series: FunnelSeries<ChartData, String>(
-          dataSource: viewModel.valoresChart,
-          xValueMapper: (ChartData data, _) => data.x,
-          yValueMapper: (ChartData data, _) => data.y,
-        ));
-  }
-}
-
-//PyramidChart
-class _SfPyramidChart extends StatelessWidget {
-  final DashboardItemViewModel viewModel;
-
-  const _SfPyramidChart({
-    super.key,
-    required this.viewModel,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return SfPyramidChart(
-        // Enables the legend
-        legend: Legend(isVisible: true),
-        series: PyramidSeries<ChartData, String>(
-          dataSource: viewModel.valoresChart,
-          xValueMapper: (ChartData data, _) => data.x,
-          yValueMapper: (ChartData data, _) => data.y,
-          // Render the data label
-          dataLabelSettings: const DataLabelSettings(isVisible: true),
-        ));
-  }
-}
-
-//CircularChart
-class _SfCircularChart extends StatelessWidget {
-  final DashboardItemViewModel viewModel;
-
-  const _SfCircularChart({
-    super.key,
-    required this.viewModel,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return SfCircularChart(
-        // Enables the legend
-        legend: Legend(isVisible: true),
-        series: <CircularSeries>[
-          // Render pie chart
-          PieSeries<ChartData, String>(
-              dataSource: viewModel.valoresChart,
-              xValueMapper: (ChartData data, _) => data.x,
-              yValueMapper: (ChartData data, _) => data.y,
-              // Render the data label
-              dataLabelSettings: const DataLabelSettings(isVisible: true))
-        ]);
-  }
-}
-
-//CartesianChart
-class _SfCartesianChart extends StatelessWidget {
-  final DashboardItemViewModel viewModel;
-  const _SfCartesianChart({
-    super.key,
-    required this.viewModel,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return SfCartesianChart(
-        //leyenda en la grafica
-        legend: Legend(isVisible: true),
-        //borde de la grafica
-        borderColor: viewModel.color,
-        // Initialize category axis
-        primaryXAxis: CategoryAxis(),
-        series: <ChartSeries>[
-          // Initialize line series
-          LineSeries<ChartData, String>(
-            dataSource: viewModel.valoresChart,
-            xValueMapper: (ChartData data, _) => data.x,
-            yValueMapper: (ChartData data, _) => data.y,
-            dataLabelSettings: const DataLabelSettings(isVisible: true),
-            color: viewModel.color,
-          )
-        ]);
-  }
-}
-
