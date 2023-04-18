@@ -5,7 +5,7 @@ import 'package:niveles_formacion/data/model/dashboard_panel_item_level/dashboar
 import 'package:stacked/stacked.dart';
 
 class DashboardViewModel extends BaseViewModel {
-  //DEPRECATED: No funciona el tamaño minimo y a la hora de insertar, si esta vacio el dashboardItemController salta un error
+  //TODO: Cambiar todo para añadir y eliminar
   final DashboardItemController<DashboardPanelItem> dashboardItemController =
       DashboardItemController(items: [
     DashboardPanelItemLevel(

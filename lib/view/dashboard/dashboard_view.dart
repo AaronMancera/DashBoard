@@ -5,7 +5,8 @@ import 'package:niveles_formacion/view/dashboard_item/dashboard_item_view.dart';
 import 'package:stacked/stacked.dart';
 import 'package:dashboard/dashboard.dart';
 
-import 'dashboard_alert_dialog.dart';
+import '../alert_dialog/alert_dialog.dart';
+
 
 class DashboardView extends StackedView<DashboardViewModel> {
   const DashboardView({super.key});
@@ -47,11 +48,20 @@ class DashboardView extends StackedView<DashboardViewModel> {
                     right: 160.0,
                     child: FloatingActionButton(
                         child: const Icon(Icons.add),
-                        onPressed: () {
+                        onPressed: () async {
                           //Dialogo selector
-                          showDialog(
+                          // Variable del viewmodel que sera adignado a traves de la devolucion del dialogo
+                          viewModel.widgetSelecionado = await showDialog(
                               context: context,
-                              builder: (context) => DashboardAlertDialog());
+                              builder: (context) => AlertDialogView());
+                          switch (viewModel.widgetSelecionado) {
+                            case "Gauge":
+                              print('object');
+                              viewModel.addGauge();
+                              break;
+                            default:
+                              print("${viewModel.widgetSelecionado}");
+                          }
                         }),
                   ),
                 ],
