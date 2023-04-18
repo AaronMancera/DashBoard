@@ -1,3 +1,5 @@
+import 'dart:collection';
+
 import 'package:dashboard/dashboard.dart';
 import 'package:niveles_formacion/data/model/dashboard_panel_item/dashboard_panel_item.dart';
 import 'package:niveles_formacion/data/model/dashboard_panel_item_level/dashboard_panel_item_level.dart';
@@ -18,7 +20,6 @@ class DashboardViewModel extends BaseViewModel {
         panelOptions: DashboardPanelItemLevelOptions(
           uid: 'optionsIdentifier',
         )),
-        
   ]);
   //Menu desplegable
   bool activado = false;
@@ -30,6 +31,7 @@ class DashboardViewModel extends BaseViewModel {
     }
     notifyListeners();
   }
+
   //Cambiar al modo edicion
   void changeEditMode() {
     dashboardItemController.isEditing = !dashboardItemController.isEditing;
@@ -38,6 +40,25 @@ class DashboardViewModel extends BaseViewModel {
 
   //Devolucion del selector de widget para añadir
   String widget = "Ninguno";
+  void addQr() {
+    DashboardPanelItemLevel qr = DashboardPanelItemLevel(
+        identifier: "Qr",
+        height: 5,
+        width: 3,
+        //Para el valor minimo de alto y ancho es desde la clase DashboardPanelItemLevel y DashboardPanelItem
+        minHeight: 4,
+        minWidth: 2,
+        panelOptions: DashboardPanelItemLevelOptions(
+          uid: 'optionsIdentifier',
+        ));
+    if (dashboardItemController.items.contains(qr.identifier)) {
+      // Ya tiene el item dentro
+      return;
+    }
+    dashboardItemController.add(qr);
+    notifyListeners();
+  }
+
   void addGauge() {
     DashboardPanelItemLevel gauge = DashboardPanelItemLevel(
         identifier: "Gauge",
@@ -54,7 +75,6 @@ class DashboardViewModel extends BaseViewModel {
   }
 
   void addCartesianChart() {
-    
     DashboardPanelItemLevel cartesianChart = DashboardPanelItemLevel(
         identifier: "Cartesian",
         height: 4,
@@ -73,10 +93,10 @@ class DashboardViewModel extends BaseViewModel {
   void addCircularChart() {
     DashboardPanelItemLevel circularChart = DashboardPanelItemLevel(
         identifier: "Circular",
-        height: 3,
+        height: 4,
         width: 4,
         minWidth: 4,
-        minHeight: 3,
+        minHeight: 4,
         panelOptions: DashboardPanelItemLevelOptions(uid: 'optionsIdentifier'));
     if (dashboardItemController.items.contains(circularChart.identifier)) {
       // Ya tiene el item dentro
@@ -101,6 +121,7 @@ class DashboardViewModel extends BaseViewModel {
     dashboardItemController.add(pyramidChart);
     notifyListeners();
   }
+
   void addFunnelChart() {
     DashboardPanelItemLevel funnelChart = DashboardPanelItemLevel(
         identifier: "Funnel",
@@ -116,6 +137,7 @@ class DashboardViewModel extends BaseViewModel {
     dashboardItemController.add(funnelChart);
     notifyListeners();
   }
+
   void addDateRangePicker() {
     DashboardPanelItemLevel dateRangePicker = DashboardPanelItemLevel(
         identifier: "DateRangePicker",
@@ -131,6 +153,7 @@ class DashboardViewModel extends BaseViewModel {
     dashboardItemController.add(dateRangePicker);
     notifyListeners();
   }
+
   void addRadialGauge() {
     DashboardPanelItemLevel radialGauge = DashboardPanelItemLevel(
         identifier: "RadialGauge",
@@ -146,5 +169,11 @@ class DashboardViewModel extends BaseViewModel {
     dashboardItemController.add(radialGauge);
     notifyListeners();
   }
+
   //TODO: Eliminar el widget
+  void eliminarWidget(DashboardPanelItem item) {
+    //NOTE:
+    dashboardItemController.delete(item.identifier);
+    notifyListeners();
+  }
 }

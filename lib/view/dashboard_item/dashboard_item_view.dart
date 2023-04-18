@@ -50,11 +50,6 @@ class DashboardItemView extends StackedView<DashboardItemViewModel> {
     };
 
     return Scaffold(
-      floatingActionButton: FloatingActionButton(
-          child: const Icon(Icons.color_lens),
-          //cambia el color con un boton flotante
-          onPressed: () => viewModel
-              .changeColor(Random().nextInt(viewModel.colores.length - 1) + 1)),
       appBar: AppBar(
         title: Text(item.identifier, style: TextStyle(color: viewModel.color)),
         actions: [
@@ -62,8 +57,14 @@ class DashboardItemView extends StackedView<DashboardItemViewModel> {
             icon: Icon(Icons.delete),
             onPressed: () {
               // Aquí va la lógica para eliminar
+              
+              viewModelPrincipal.eliminarWidget(item);
             },
           ),
+          IconButton(
+              onPressed: () => viewModel.changeColor(
+                  Random().nextInt(viewModel.colores.length - 1) + 1),
+              icon: const Icon(Icons.color_lens))
         ],
       ),
       body: Center(

@@ -44,7 +44,7 @@ class DashboardView extends StackedView<DashboardViewModel> {
                   ),
                   Positioned(
                     bottom: 10.0,
-                    right: 160.0,
+                    right: 150.0,
                     child: FloatingActionButton(
                         child: const Icon(Icons.add),
                         onPressed: () async {
@@ -57,6 +57,9 @@ class DashboardView extends StackedView<DashboardViewModel> {
                               builder: (context) => AlertDialogView(viewModel));
 
                           switch (viewModel.widget) {
+                            case "Qr":
+                              viewModel.addQr();
+                              break;
                             case "Gauge":
                               viewModel.addGauge();
                               break;
