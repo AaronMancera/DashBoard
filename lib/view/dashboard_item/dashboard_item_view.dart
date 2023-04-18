@@ -9,9 +9,6 @@ import 'package:niveles_formacion/view/dashboard_item_widget/funnel_chart.dart';
 import 'package:niveles_formacion/view/dashboard_item_widget/pyramid_chart.dart';
 import 'package:niveles_formacion/view/dashboard_item_widget/radial_gauge.dart';
 import 'package:stacked/stacked.dart';
-import 'package:syncfusion_flutter_charts/charts.dart';
-import 'package:syncfusion_flutter_datepicker/datepicker.dart';
-import 'package:syncfusion_flutter_gauges/gauges.dart';
 
 import '../dashboard_item_widget/barcode_generator.dart';
 import '../dashboard_item_widget/cartesian_chart.dart';

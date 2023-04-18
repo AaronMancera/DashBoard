@@ -1,13 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:niveles_formacion/view/alert_dialog/alert_dialog_view_model.dart';
+import 'package:niveles_formacion/view/dashboard/dashboard_viewmodel.dart';
 import 'package:stacked/stacked.dart';
 
 class AlertDialogView extends StackedView<AlertDialogViewModel> {
-  const AlertDialogView({super.key});
+  const AlertDialogView(this.dashboardViewModel, {super.key});
+  final DashboardViewModel dashboardViewModel;
 
   @override
   Widget builder(
       BuildContext context, AlertDialogViewModel viewModel, Widget? child) {
+    viewModel.restantes(dashboardViewModel.dashboardItemController.items);
     return AlertDialog(
       title: Text('Selector de widget'),
       content: DropdownButton<String>(
@@ -34,6 +37,7 @@ class AlertDialogView extends StackedView<AlertDialogViewModel> {
         TextButton(
             child: Text("Aceptar"),
             onPressed: () {
+
               Navigator.of(context).pop(viewModel.widgetSelecionado);
               
             }),

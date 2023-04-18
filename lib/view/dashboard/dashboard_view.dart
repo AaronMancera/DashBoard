@@ -54,7 +54,7 @@ class DashboardView extends StackedView<DashboardViewModel> {
                           viewModel.widget = await showDialog(
                               barrierDismissible: false,
                               context: context,
-                              builder: (context) => AlertDialogView());
+                              builder: (context) => AlertDialogView(viewModel));
 
                           switch (viewModel.widget) {
                             case "Gauge":
@@ -65,6 +65,18 @@ class DashboardView extends StackedView<DashboardViewModel> {
                               break;
                             case "Circular":
                               viewModel.addCircularChart();
+                              break;
+                            case "Pyramid":
+                              viewModel.addPyramidChart();
+                              break;
+                            case "Funnel":
+                              viewModel.addFunnelChart();
+                              break;
+                            case "DateRangePicker":
+                              viewModel.addDateRangePicker();
+                              break;
+                            case "RadialGauge":
+                              viewModel.addRadialGauge();
                               break;
                             default:
                               return;

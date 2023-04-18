@@ -118,7 +118,7 @@ class DashboardViewModel extends BaseViewModel {
     DashboardPanelItemLevel circularChart = DashboardPanelItemLevel(
         identifier: "Circular",
         height: 3,
-        width: 8,
+        width: 4,
         minWidth: 4,
         minHeight: 3,
         panelOptions: DashboardPanelItemLevelOptions(uid: 'optionsIdentifier'));
@@ -127,6 +127,67 @@ class DashboardViewModel extends BaseViewModel {
       return;
     }
     dashboardItemController.add(circularChart);
+    notifyListeners();
+  }
+
+  void addPyramidChart() {
+    DashboardPanelItemLevel pyramidChart = DashboardPanelItemLevel(
+        identifier: "Pyramid",
+        height: 3,
+        width: 4,
+        minWidth: 4,
+        minHeight: 3,
+        panelOptions: DashboardPanelItemLevelOptions(uid: 'optionsIdentifier'));
+    if (dashboardItemController.items.contains(pyramidChart.identifier)) {
+      // Ya tiene el item dentro
+      return;
+    }
+    dashboardItemController.add(pyramidChart);
+    notifyListeners();
+  }
+  void addFunnelChart() {
+    DashboardPanelItemLevel funnelChart = DashboardPanelItemLevel(
+        identifier: "Funnel",
+        height: 3,
+        width: 4,
+        minWidth: 4,
+        minHeight: 3,
+        panelOptions: DashboardPanelItemLevelOptions(uid: 'optionsIdentifier'));
+    if (dashboardItemController.items.contains(funnelChart.identifier)) {
+      // Ya tiene el item dentro
+      return;
+    }
+    dashboardItemController.add(funnelChart);
+    notifyListeners();
+  }
+  void addDateRangePicker() {
+    DashboardPanelItemLevel dateRangePicker = DashboardPanelItemLevel(
+        identifier: "DateRangePicker",
+        height: 3,
+        width: 4,
+        minWidth: 4,
+        minHeight: 3,
+        panelOptions: DashboardPanelItemLevelOptions(uid: 'optionsIdentifier'));
+    if (dashboardItemController.items.contains(dateRangePicker.identifier)) {
+      // Ya tiene el item dentro
+      return;
+    }
+    dashboardItemController.add(dateRangePicker);
+    notifyListeners();
+  }
+  void addRadialGauge() {
+    DashboardPanelItemLevel radialGauge = DashboardPanelItemLevel(
+        identifier: "RadialGauge",
+        height: 4,
+        width: 4,
+        minWidth: 4,
+        minHeight: 4,
+        panelOptions: DashboardPanelItemLevelOptions(uid: 'optionsIdentifier'));
+    if (dashboardItemController.items.contains(radialGauge.identifier)) {
+      // Ya tiene el item dentro
+      return;
+    }
+    dashboardItemController.add(radialGauge);
     notifyListeners();
   }
 }
