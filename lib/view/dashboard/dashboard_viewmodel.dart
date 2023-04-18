@@ -170,9 +170,8 @@ class DashboardViewModel extends BaseViewModel {
     notifyListeners();
   }
 
-  //TODO: Eliminar el widget
+  //Eliminar el widget
   void eliminarWidget(DashboardPanelItem item) {
-    //NOTE:
     dashboardItemController.delete(item.identifier);
     notifyListeners();
   }

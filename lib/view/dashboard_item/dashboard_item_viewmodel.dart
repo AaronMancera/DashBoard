@@ -10,7 +10,7 @@ class DashboardItemViewModel extends BaseViewModel {
   double _sliderValue = 0;
   double get sliderValue => _sliderValue;
   final List<Color> colores = [
-    Colors.black,
+    Colors.white38,
     Colors.blue,
     Colors.yellow,
     Colors.green,
@@ -20,7 +20,7 @@ class DashboardItemViewModel extends BaseViewModel {
     Colors.teal,
     Colors.blueAccent
   ];
-  Color _color = Colors.black;
+  Color _color = Colors.white38;
   Color get color => _color;
   //QR
   final String _url = 'https://www.procisa.es/';

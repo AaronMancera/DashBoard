@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:niveles_formacion/view/alert_dialog/alert_dialog_view_model.dart';
+import 'package:niveles_formacion/view/alert_dialog/alert_dialog_viewmodel.dart';
 import 'package:niveles_formacion/view/dashboard/dashboard_viewmodel.dart';
 import 'package:stacked/stacked.dart';
 

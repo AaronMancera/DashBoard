@@ -51,14 +51,33 @@ class DashboardItemView extends StackedView<DashboardItemViewModel> {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text(item.identifier, style: TextStyle(color: viewModel.color)),
+        backgroundColor: viewModel.color,
+        title:
+            Text(item.identifier, style: const TextStyle(color: Colors.black)),
         actions: [
           IconButton(
-            icon: Icon(Icons.delete),
+            icon: const Icon(Icons.delete),
             onPressed: () {
               // Aquí va la lógica para eliminar
-              
-              viewModelPrincipal.eliminarWidget(item);
+              showDialog(
+                  context: context,
+                  builder: (context) => AlertDialog(
+                        title: Text(
+                            "¿Quieres eliminar el widget ${item.identifier}?"),
+                        actions: [
+                          TextButton(
+                              child: const Text("Aceptar"),
+                              onPressed: () {
+                                Navigator.of(context).pop();
+                                viewModelPrincipal.eliminarWidget(item);
+                              }),
+                          TextButton(
+                              child: const Text("Cancelar"),
+                              onPressed: () {
+                                Navigator.of(context).pop();
+                              }),
+                        ],
+                      ));
             },
           ),
           IconButton(
