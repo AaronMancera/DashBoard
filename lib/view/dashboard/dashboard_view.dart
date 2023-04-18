@@ -50,7 +50,9 @@ class DashboardView extends StackedView<DashboardViewModel> {
                         onPressed: () async {
                           //Dialogo selector
                           // Variable del viewmodel que sera adignado a traves de la devolucion del dialogo
+                          viewModel.widget="Ninguno";
                           viewModel.widget = await showDialog(
+                            barrierDismissible: false,
                               context: context,
                               builder: (context) => AlertDialogView());
 
