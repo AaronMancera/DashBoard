@@ -62,12 +62,27 @@ class DashboardViewModel extends BaseViewModel {
   //   //     width: 2,
   //   //     panelOptions: DashboardPanelItemLevelOptions(uid: 'optionsIdentifier')),
   // ]);
+  //TODO: Hacer un menu desplegable con las herramientas
+  bool activado=false;
+  void changeTools(){
+    if(!activado){
+      activado=true;
+    }else{
+      activado=false;
+    }
+    notifyListeners();
 
+  }
   void changeEditMode() {
     dashboardItemController.isEditing = !dashboardItemController.isEditing;
     notifyListeners();
   }
-
+  //TODO: Selector de widget
+  String widgetSelecionado="";
+  void widgetSelected(String value){
+    widgetSelecionado=value;
+    print(widgetSelecionado);
+  }
   void addGauge() {
     DashboardPanelItemLevel gauge = DashboardPanelItemLevel(
         identifier: "Gauge",

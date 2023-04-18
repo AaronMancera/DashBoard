@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
 
-import '../dashboard_item_widget/LinearGauge.dart';
+import '../dashboard_item_widget/linear_gauge.dart';
 
 class DashboardItemViewModel extends BaseViewModel {
   //Lista de widgets

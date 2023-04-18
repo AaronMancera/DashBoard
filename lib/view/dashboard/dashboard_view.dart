@@ -12,24 +12,65 @@ class DashboardView extends StackedView<DashboardViewModel> {
   Widget builder(
       BuildContext context, DashboardViewModel viewModel, Widget? child) {
     return Scaffold(
-        floatingActionButton: Stack(
-          children: [
-            Positioned(
-              bottom: 10.0,
-              right: 80.0,
-              child: FloatingActionButton(
-                  child: const Icon(Icons.add),
-                  onPressed: () => viewModel.addGauge()),
-            ),
-            Positioned(
-              bottom: 10.0,
-              right: 10.0,
-              child: FloatingActionButton(
-                  child: const Icon(Icons.edit),
-                  onPressed: () => viewModel.changeEditMode()),
-            )
-          ],
-        ),
+        floatingActionButton: !viewModel.activado
+            ? Stack(
+                children: [
+                  Positioned(
+                    bottom: 10.0,
+                    right: 10.0,
+                    child: FloatingActionButton(
+                        child: const Icon(Icons.turn_left_outlined),
+                        onPressed: () => viewModel.changeTools()),
+                  )
+                ],
+              )
+            : Stack(
+                children: [
+                  Positioned(
+                    bottom: 10.0,
+                    right: 10.0,
+                    child: FloatingActionButton(
+                        child: const Icon(Icons.present_to_all),
+                        onPressed: () => viewModel.changeTools()),
+                  ),
+                  Positioned(
+                    bottom: 10.0,
+                    right: 80.0,
+                    child: FloatingActionButton(
+                        child: const Icon(Icons.edit),
+                        onPressed: () => viewModel.changeEditMode()),
+                  ),
+                  Positioned(
+                    bottom: 10.0,
+                    right: 160.0,
+                    child: FloatingActionButton(
+                        child: const Icon(Icons.add),
+                        onPressed: () {
+                          //Dialogo selector
+                          showDialog(
+                              context: context,
+                              builder: (context) => AlertDialog(
+                                    title: Text('Selector de widget'),
+                                    //TODO:Selector
+                                    content: Text('Prueba'),
+                                    //TODO: Realizar la accion de añadir
+                                    actions: [
+                                      TextButton(
+                                          child: Text("Aceptar"),
+                                          onPressed: () {
+                                            Navigator.of(context).pop();
+                                          }),
+                                      TextButton(
+                                          child: Text("Cancelar"),
+                                          onPressed: () {
+                                            Navigator.of(context).pop();
+                                          }),
+                                    ],
+                                  ));
+                        }),
+                  ),
+                ],
+              ),
         body: Center(
             child: Dashboard<DashboardPanelItem>(
                 editModeSettings: EditModeSettings(resizeCursorSide: 10),
