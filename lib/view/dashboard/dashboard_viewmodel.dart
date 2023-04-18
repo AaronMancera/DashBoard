@@ -5,7 +5,7 @@ import 'package:niveles_formacion/data/model/dashboard_panel_item_level/dashboar
 import 'package:stacked/stacked.dart';
 
 class DashboardViewModel extends BaseViewModel {
-  //TODO: Cambiar todo para añadir y eliminar
+  //XXX: Si no se inicializa con un item da fallo
   final DashboardItemController<DashboardPanelItem> dashboardItemController =
       DashboardItemController(items: [
     DashboardPanelItemLevel(
@@ -20,50 +20,7 @@ class DashboardViewModel extends BaseViewModel {
         )),
         
   ]);
-  // final DashboardItemController<DashboardPanelItem> dashboardItemController =
-  //     DashboardItemController(items: [
-  //   // // DashboardPanelItemLevel(
-  //   // //     identifier: "Gauge1",
-  //   // //     height: 1,
-  //   // //     width: 8,
-  //   // //     panelOptions: DashboardPanelItemLevelOptions(uid: 'optionsIdentifier')),
-  //   // DashboardPanelItemLevel(
-  //   //     identifier: "Qr1",
-  //   //     height: 2,
-  //   //     width: 1,
-  //   //     panelOptions: DashboardPanelItemLevelOptions(uid: 'optionsIdentifier')),
-  //   // DashboardPanelItemLevel(
-  //   //     identifier: "CartesianChart1",
-  //   //     height: 2,
-  //   //     width: 2,
-  //   //     panelOptions: DashboardPanelItemLevelOptions(uid: 'optionsIdentifier')),
-  //   // DashboardPanelItemLevel(
-  //   //     identifier: "CircularChart1",
-  //   //     height: 2,
-  //   //     width: 2,
-  //   //     panelOptions: DashboardPanelItemLevelOptions(uid: 'optionsIdentifier')),
-  //   // DashboardPanelItemLevel(
-  //   //     identifier: "PyramidChart1",
-  //   //     height: 2,
-  //   //     width: 2,
-  //   //     panelOptions: DashboardPanelItemLevelOptions(uid: 'optionsIdentifier')),
-  //   // DashboardPanelItemLevel(
-  //   //     identifier: "FunnelChart1",
-  //   //     height: 2,
-  //   //     width: 2,
-  //   //     panelOptions: DashboardPanelItemLevelOptions(uid: 'optionsIdentifier')),
-  //   // DashboardPanelItemLevel(
-  //   //     identifier: "DateRangePicker1",
-  //   //     height: 2,
-  //   //     width: 2,
-  //   //     panelOptions: DashboardPanelItemLevelOptions(uid: 'optionsIdentifier')),
-  //   // DashboardPanelItemLevel(
-  //   //     identifier: "RadialGauge1",
-  //   //     height: 2,
-  //   //     width: 2,
-  //   //     panelOptions: DashboardPanelItemLevelOptions(uid: 'optionsIdentifier')),
-  // ]);
-  //TODO: Hacer un menu desplegable con las herramientas
+  //Menu desplegable
   bool activado = false;
   void changeTools() {
     if (!activado) {
@@ -73,15 +30,14 @@ class DashboardViewModel extends BaseViewModel {
     }
     notifyListeners();
   }
-
+  //Cambiar al modo edicion
   void changeEditMode() {
     dashboardItemController.isEditing = !dashboardItemController.isEditing;
     notifyListeners();
   }
 
-  //TODO: Selector de widget
+  //Devolucion del selector de widget para añadir
   String widget = "Ninguno";
-
   void addGauge() {
     DashboardPanelItemLevel gauge = DashboardPanelItemLevel(
         identifier: "Gauge",
@@ -190,4 +146,5 @@ class DashboardViewModel extends BaseViewModel {
     dashboardItemController.add(radialGauge);
     notifyListeners();
   }
+  //TODO: Eliminar el widget
 }

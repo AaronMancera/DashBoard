@@ -1,7 +1,7 @@
 import 'package:stacked/stacked.dart';
 
 class AlertDialogViewModel extends BaseViewModel {
-  //TODO: Selector de widget
+  //Todos los nombres/identificadores de widgets estan aqui
   String widgetSelecionado = "Ninguno";
   List<String> widgestDisponibles = [
     "Ninguno",
@@ -14,13 +14,12 @@ class AlertDialogViewModel extends BaseViewModel {
     'DateRangePicker',
     'RadialGauge'
   ];
-
+  //Se actualiza el widget selecionado
   void widgetSelected(String value) {
     widgetSelecionado = value;
-    // print(widgetSelecionado);
     notifyListeners();
   }
-
+  //Muestra unicamente aquellos que aun no estan mostrandose en pantalla
   void restantes(List<String> valores) {
     widgestDisponibles.removeWhere((element) => valores.contains(element));
   }

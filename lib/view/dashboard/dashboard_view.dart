@@ -89,7 +89,7 @@ class DashboardView extends StackedView<DashboardViewModel> {
             child: Dashboard<DashboardPanelItem>(
                 editModeSettings: EditModeSettings(resizeCursorSide: 10),
                 //Devuelve el mapa de paneles del dashboard para ser procesados por el dashboard_item_view
-                itemBuilder: (item) => DashboardItemView(item),
+                itemBuilder: (item) => DashboardItemView(item,viewModel),
                 //Controlador del dashboard
                 dashboardItemController: viewModel.dashboardItemController)));
   }

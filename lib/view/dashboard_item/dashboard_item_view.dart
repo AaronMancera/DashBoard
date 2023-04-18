@@ -2,6 +2,7 @@ import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'package:niveles_formacion/data/model/dashboard_panel_item/dashboard_panel_item.dart';
+import 'package:niveles_formacion/view/dashboard/dashboard_viewmodel.dart';
 import 'package:niveles_formacion/view/dashboard_item/dashboard_item_viewmodel.dart';
 import 'package:niveles_formacion/view/dashboard_item_widget/circular_chart.dart';
 import 'package:niveles_formacion/view/dashboard_item_widget/date_range_picker.dart';
@@ -15,9 +16,10 @@ import '../dashboard_item_widget/cartesian_chart.dart';
 import '../dashboard_item_widget/linear_gauge.dart';
 
 class DashboardItemView extends StackedView<DashboardItemViewModel> {
-  const DashboardItemView(this.item, {super.key});
+  const DashboardItemView(this.item, this.viewModelPrincipal, {super.key});
 
   final DashboardPanelItem item;
+  final DashboardViewModel viewModelPrincipal;
 
   @override
   Widget builder(
@@ -53,11 +55,20 @@ class DashboardItemView extends StackedView<DashboardItemViewModel> {
           //cambia el color con un boton flotante
           onPressed: () => viewModel
               .changeColor(Random().nextInt(viewModel.colores.length - 1) + 1)),
+      appBar: AppBar(
+        title: Text(item.identifier, style: TextStyle(color: viewModel.color)),
+        actions: [
+          IconButton(
+            icon: Icon(Icons.delete),
+            onPressed: () {
+              // Aquí va la lógica para eliminar
+            },
+          ),
+        ],
+      ),
       body: Center(
         child: Column(
           children: [
-            //muestra identificador
-            Text(item.identifier, style: TextStyle(color: viewModel.color)),
             const SizedBox(
               height: 10,
             ),
