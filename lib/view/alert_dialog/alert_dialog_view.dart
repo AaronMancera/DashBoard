@@ -12,7 +12,7 @@ class AlertDialogView extends StackedView<AlertDialogViewModel> {
       BuildContext context, AlertDialogViewModel viewModel, Widget? child) {
     viewModel.restantes(dashboardViewModel.dashboardItemController.items);
     return AlertDialog(
-      title: Text('Selector de widget'),
+      title: const Text('Selector de widget'),
       content: DropdownButton<String>(
         value: viewModel.widgetSelecionado,
         elevation: 16,
@@ -35,14 +35,12 @@ class AlertDialogView extends StackedView<AlertDialogViewModel> {
       ),
       actions: [
         TextButton(
-            child: Text("Aceptar"),
+            child: const Text("Aceptar"),
             onPressed: () {
-
               Navigator.of(context).pop(viewModel.widgetSelecionado);
-              
             }),
         TextButton(
-            child: Text("Cancelar"),
+            child: const Text("Cancelar"),
             onPressed: () {
               Navigator.of(context).pop("Ninguno");
             }),

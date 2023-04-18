@@ -1,5 +1,3 @@
-import 'dart:collection';
-
 import 'package:dashboard/dashboard.dart';
 import 'package:niveles_formacion/data/model/dashboard_panel_item/dashboard_panel_item.dart';
 import 'package:niveles_formacion/data/model/dashboard_panel_item_level/dashboard_panel_item_level.dart';
@@ -62,9 +60,10 @@ class DashboardViewModel extends BaseViewModel {
   void addGauge() {
     DashboardPanelItemLevel gauge = DashboardPanelItemLevel(
         identifier: "Gauge",
-        height: 1,
+        height: 2,
         width: 8,
         minWidth: 4,
+        minHeight: 2,
         panelOptions: DashboardPanelItemLevelOptions(uid: 'optionsIdentifier'));
     if (dashboardItemController.items.contains(gauge.identifier)) {
       // Ya tiene el item dentro

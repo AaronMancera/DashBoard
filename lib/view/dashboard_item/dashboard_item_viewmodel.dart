@@ -1,16 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
 
-import '../dashboard_item_widget/linear_gauge.dart';
-
 class DashboardItemViewModel extends BaseViewModel {
   //Lista de widgets
-  List<Type> widgets=[];
+  List<Type> widgets = [];
   //Gauge
   double _sliderValue = 0;
   double get sliderValue => _sliderValue;
   final List<Color> colores = [
-    Colors.white38,
+    Colors.lightBlue,
     Colors.blue,
     Colors.yellow,
     Colors.green,
@@ -20,7 +18,7 @@ class DashboardItemViewModel extends BaseViewModel {
     Colors.teal,
     Colors.blueAccent
   ];
-  Color _color = Colors.white38;
+  Color _color = Colors.lightBlue;
   Color get color => _color;
   //QR
   final String _url = 'https://www.procisa.es/';
