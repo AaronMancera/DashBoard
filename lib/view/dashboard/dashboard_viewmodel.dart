@@ -79,13 +79,7 @@ class DashboardViewModel extends BaseViewModel {
   }
 
   //TODO: Selector de widget
-  String widgetSelecionado = "Ninguno";
-  List<String> widgestDisponibles = ["Ninguno", "Gauge", "Cartasian"];
-  void widgetSelected(String value) {
-    widgetSelecionado = value;
-    print(widgetSelecionado);
-    notifyListeners();
-  }
+  String widget = "Ninguno";
 
   void addGauge() {
     DashboardPanelItemLevel gauge = DashboardPanelItemLevel(
@@ -107,6 +101,8 @@ class DashboardViewModel extends BaseViewModel {
         identifier: "CartesianChart",
         height: 2,
         width: 2,
+        minHeight: 4,
+        minWidth: 5,
         panelOptions: DashboardPanelItemLevelOptions(uid: 'optionsIdentifier'));
     if (dashboardItemController.items.contains(cartesianChart.identifier)) {
       // Ya tiene el item dentro

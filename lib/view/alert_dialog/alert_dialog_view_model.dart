@@ -7,10 +7,10 @@ import 'package:stacked/stacked.dart';
 class AlertDialogViewModel extends BaseViewModel {
   //TODO: Selector de widget
   String widgetSelecionado = "Ninguno";
-  List<String> widgestDisponibles = ["Ninguno", "Gauge", "Cartasian"];
+  List<String> widgestDisponibles = ["Ninguno", "Gauge", "Cartesian"];
   void widgetSelected(String value) {
     widgetSelecionado = value;
-    print(widgetSelecionado);
+    // print(widgetSelecionado);
     notifyListeners();
   }
 }

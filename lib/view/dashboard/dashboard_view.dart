@@ -7,7 +7,6 @@ import 'package:dashboard/dashboard.dart';
 
 import '../alert_dialog/alert_dialog.dart';
 
-
 class DashboardView extends StackedView<DashboardViewModel> {
   const DashboardView({super.key});
 
@@ -51,16 +50,19 @@ class DashboardView extends StackedView<DashboardViewModel> {
                         onPressed: () async {
                           //Dialogo selector
                           // Variable del viewmodel que sera adignado a traves de la devolucion del dialogo
-                          viewModel.widgetSelecionado = await showDialog(
+                          viewModel.widget = await showDialog(
                               context: context,
                               builder: (context) => AlertDialogView());
-                          switch (viewModel.widgetSelecionado) {
+
+                          switch (viewModel.widget) {
                             case "Gauge":
-                              print('object');
                               viewModel.addGauge();
                               break;
+                            case "Cartesian":
+                              viewModel.addCartesianChart();
+                              break;
                             default:
-                              print("${viewModel.widgetSelecionado}");
+                              return;
                           }
                         }),
                   ),
