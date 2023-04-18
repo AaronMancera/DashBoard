@@ -5,6 +5,8 @@ import 'package:niveles_formacion/view/dashboard_item/dashboard_item_view.dart';
 import 'package:stacked/stacked.dart';
 import 'package:dashboard/dashboard.dart';
 
+import 'dashboard_alert_dialog.dart';
+
 class DashboardView extends StackedView<DashboardViewModel> {
   const DashboardView({super.key});
 
@@ -49,45 +51,7 @@ class DashboardView extends StackedView<DashboardViewModel> {
                           //Dialogo selector
                           showDialog(
                               context: context,
-                              builder: (context) => AlertDialog(
-                                    title: Text('Selector de widget'),
-                                    //TODO:Selector
-                                    content: DropdownButton<String>(
-                                      value: viewModel.widgetSelecionado,
-                                      elevation: 16,
-                                      style: const TextStyle(
-                                          color: Colors.deepPurple),
-                                      underline: Container(
-                                        height: 2,
-                                        color: Colors.deepPurpleAccent,
-                                      ),
-                                      onChanged: (String? value) {
-                                        // This is called when the user selects an item.
-                                        viewModel.widgetSelected(value!);
-                                      },
-                                      items: viewModel.widgestDisponibles
-                                          .map<DropdownMenuItem<String>>(
-                                              (String value) {
-                                        return DropdownMenuItem<String>(
-                                          value: value,
-                                          child: Text(value),
-                                        );
-                                      }).toList(),
-                                    ),
-                                    //TODO: Realizar la accion de añadir
-                                    actions: [
-                                      TextButton(
-                                          child: Text("Aceptar"),
-                                          onPressed: () {
-                                            Navigator.of(context).pop();
-                                          }),
-                                      TextButton(
-                                          child: Text("Cancelar"),
-                                          onPressed: () {
-                                            Navigator.of(context).pop();
-                                          }),
-                                    ],
-                                  ));
+                              builder: (context) => DashboardAlertDialog());
                         }),
                   ),
                 ],
