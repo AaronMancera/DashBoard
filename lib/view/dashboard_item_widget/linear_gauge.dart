@@ -19,7 +19,6 @@ class LinearGauge extends StatelessWidget {
       maximum: viewModel.maximo.toDouble(),
       markerPointers: [
         LinearShapePointer(
-          
           value: viewModel.value,
           onChanged: (value) {
             viewModel.update(value);

@@ -5,10 +5,13 @@ class DashboardItemViewModel extends BaseViewModel {
   //Lista de widgets
   List<Type> widgets = [];
   //Gauge
-  int minimo=50;
+  int minimo=0;
+  int maximo=150;
 
-  int maximo=100;
+
   double value = 0;
+
+  
   List<Color> colores = [
     Colors.lightBlue,
     Colors.blue,

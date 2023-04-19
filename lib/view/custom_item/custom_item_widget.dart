@@ -35,7 +35,10 @@ class CustomItemWidget extends StatelessWidget {
           if (viewModel.widgetSelecionado == "Gauge")
             Column(
               children: [
-                const Text("Escriba el min"),
+                const SizedBox(
+                  height: 10,
+                ),
+                const Text("Escriba el minimo"),
                 const SizedBox(
                   height: 10,
                 ),
@@ -51,7 +54,7 @@ class CustomItemWidget extends StatelessWidget {
                 const SizedBox(
                   height: 10,
                 ),
-                const Text("Escriba el max"),
+                const Text("Escriba el maximo"),
                 TextField(
                   keyboardType: TextInputType.number,
                   
