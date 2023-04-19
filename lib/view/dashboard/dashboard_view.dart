@@ -56,34 +56,34 @@ class DashboardView extends StackedView<DashboardViewModel> {
                               context: context,
                               builder: (context) => AlertDialogView(viewModel));
 
-                          switch (viewModel.widget) {
-                            case "Qr":
-                              viewModel.addQr();
-                              break;
-                            case "Gauge":
-                              viewModel.addGauge();
-                              break;
-                            case "Cartesian":
-                              viewModel.addCartesianChart();
-                              break;
-                            case "Circular":
-                              viewModel.addCircularChart();
-                              break;
-                            case "Pyramid":
-                              viewModel.addPyramidChart();
-                              break;
-                            case "Funnel":
-                              viewModel.addFunnelChart();
-                              break;
-                            case "DateRangePicker":
-                              viewModel.addDateRangePicker();
-                              break;
-                            case "RadialGauge":
-                              viewModel.addRadialGauge();
-                              break;
-                            default:
-                              return;
-                          }
+                          // switch (viewModel.widget) {
+                          //   case "Qr":
+                          //     viewModel.addQr();
+                          //     break;
+                          //   case "Gauge":
+                          //     viewModel.addGauge();
+                          //     break;
+                          //   case "Cartesian":
+                          //     viewModel.addCartesianChart();
+                          //     break;
+                          //   case "Circular":
+                          //     viewModel.addCircularChart();
+                          //     break;
+                          //   case "Pyramid":
+                          //     viewModel.addPyramidChart();
+                          //     break;
+                          //   case "Funnel":
+                          //     viewModel.addFunnelChart();
+                          //     break;
+                          //   case "DateRangePicker":
+                          //     viewModel.addDateRangePicker();
+                          //     break;
+                          //   case "RadialGauge":
+                          //     viewModel.addRadialGauge();
+                          //     break;
+                          //   default:
+                          //     return;
+                          // }
                         }),
                   ),
                 ],
