@@ -6,7 +6,6 @@ import 'package:stacked/stacked.dart';
 import 'package:dashboard/dashboard.dart';
 
 import '../alert_dialog/alert_dialog_view.dart';
-import '../custom_item/custom_item_view.dart';
 
 class DashboardView extends StackedView<DashboardViewModel> {
   const DashboardView({super.key});
