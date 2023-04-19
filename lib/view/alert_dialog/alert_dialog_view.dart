@@ -57,6 +57,7 @@ class AlertDialogView extends StackedView<AlertDialogViewModel> {
         TextButton(
             child: const Text("Cancelar"),
             onPressed: () {
+              viewModel.widgetEntero = {};
               Navigator.of(context).pop(viewModel.widgetEntero);
             }),
       ],

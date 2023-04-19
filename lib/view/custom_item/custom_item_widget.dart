@@ -57,13 +57,28 @@ class CustomItemWidget extends StatelessWidget {
                 const Text("Escriba el maximo"),
                 TextField(
                   keyboardType: TextInputType.number,
-                  
                   onChanged: (value) {
                     value == ""
                         ? viewModel.updateMaximo(0)
                         : viewModel.updateMaximo(int.parse(value));
                     viewModel.updateWidgetEntero("Maximo", viewModel.maximo);
                   },
+                ),
+                const SizedBox(
+                  height: 10,
+                ),
+                Column(
+                  children: List.generate(
+                    viewModel.orientaciones.length,
+                    (index) => RadioListTile(
+                        title: Text(viewModel.orientaciones[index]),
+                        value: viewModel.orientaciones[index],
+                        groupValue: viewModel.valorEscogido,
+                        onChanged: (value) {
+                          viewModel.updateOrientacionSelecionada(value);
+                          viewModel.updateWidgetEntero("Orientacion", viewModel.orientacionSelecionada);
+                        }),
+                  ),
                 ),
                 Text('${viewModel.widgetEntero}')
               ],

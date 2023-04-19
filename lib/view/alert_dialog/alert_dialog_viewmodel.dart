@@ -64,10 +64,18 @@ class AlertDialogViewModel extends BaseViewModel {
   }
 
   //LinearGauge
-  List<LinearGaugeOrientation> orientacion = [
-    LinearGaugeOrientation.horizontal,
-    LinearGaugeOrientation.vertical
-  ];
+  LinearGaugeOrientation orientacionSelecionada =
+      LinearGaugeOrientation.horizontal;
+  String valorEscogido = "Horizontal";
+  List<String> orientaciones = ["Horizontal", "Vertical"];
+  void updateOrientacionSelecionada(value) {
+    valorEscogido=value;
+    value == orientaciones[0]
+        ? orientacionSelecionada = LinearGaugeOrientation.horizontal
+        : orientacionSelecionada = LinearGaugeOrientation.vertical;
+        notifyListeners();
+  }
+  //TODO: Aun falta todo lo de abajo
   List<LinearGaugeRange> rangosLinear = [];
   bool markerPointer = false;
   int valorPointer = 0;

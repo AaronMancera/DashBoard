@@ -38,6 +38,9 @@ class DashboardItemView extends StackedView<DashboardItemViewModel> {
         viewModelPrincipal.widget['Maximo'] != null
             ? viewModel.maximo = viewModelPrincipal.widget['Maximo']
             : "";
+        viewModelPrincipal.widget['Orientacion'] != null
+            ? viewModel.orientacion = viewModelPrincipal.widget['Orientacion']
+            : "";
         break;
     }
     Map<String, Widget> widgets = {
