@@ -21,11 +21,24 @@ class AlertDialogViewModel extends BaseViewModel {
     widgetSelecionado = value;
     notifyListeners();
   }
+
   //Muestra unicamente aquellos que aun no estan mostrandose en pantalla
   void restantes(List<String> valores) {
     widgestDisponibles.removeWhere((element) => valores.contains(element));
   }
+
   //TODO: Customizacion de wigets
+  //Mapa con el nombre y los parametros de customizacion
+  // Map <String,dynamic> widgetEntero = {
+  //   "widget":"Qr",
+  //   "url":"https://google.com"
+  // };
+  Map<String, dynamic> widgetEntero = {
+  };
+  void updateWidgetEntero(String clave, value){
+    widgetEntero[clave]=value;
+  }
+
   //QR
   String urlQr = "";
   //Cartesian - Circular - FunnelChart - PyramidChart
@@ -42,16 +55,15 @@ class AlertDialogViewModel extends BaseViewModel {
   int minimo = 0;
   int maximo = 0;
   //LinearGauge
-  List<LinearGaugeOrientation> orientacion=[
-    LinearGaugeOrientation.horizontal,LinearGaugeOrientation.vertical
+  List<LinearGaugeOrientation> orientacion = [
+    LinearGaugeOrientation.horizontal,
+    LinearGaugeOrientation.vertical
   ];
-  List<LinearGaugeRange> rangosLinear=[
-    
-  ];
-  bool markerPointer=false;
-  int valorPointer=0;
-  bool linearBarPointer=false;
-  int valorBarPinter=0;
+  List<LinearGaugeRange> rangosLinear = [];
+  bool markerPointer = false;
+  int valorPointer = 0;
+  bool linearBarPointer = false;
+  int valorBarPinter = 0;
 
   //RadialGauge
 
@@ -72,33 +84,37 @@ class AlertDialogViewModel extends BaseViewModel {
     enableMultiView = opcion;
     notifyListeners();
   }
+
   //NOTE: Actualizar configuracion para el LinearGauge
   //Añade rango personalizado con colores y todo - LinearGaugeRange(startValue: 0, endValue: 50, color: Colors.green),
-  void updateLinearGaugeRange(LinearGaugeRange linearGaugeRange){
+  void updateLinearGaugeRange(LinearGaugeRange linearGaugeRange) {
     rangosLinear.add(linearGaugeRange);
     notifyListeners();
   }
+
   //Activar la opcion de que aparezca el pmarkerpointer
-  void updateMarkerPointer(bool opcion){
-    markerPointer=opcion;
+  void updateMarkerPointer(bool opcion) {
+    markerPointer = opcion;
     notifyListeners();
   }
+
   //Asignaer el valor
-  void updateValorPointer(valor){
-    valorPointer=valor;
+  void updateValorPointer(valor) {
+    valorPointer = valor;
     notifyListeners();
   }
+
   //Activar la opcion de que aparezca un bar coloreado
-  void updateLinearBarPointer(bool opcion){
-    linearBarPointer=opcion;
+  void updateLinearBarPointer(bool opcion) {
+    linearBarPointer = opcion;
     notifyListeners();
   }
+
   //Valor del bar
-  void updatevalorBarPinter(valor){
-    valorBarPinter=valor;
+  void updatevalorBarPinter(valor) {
+    valorBarPinter = valor;
   }
 }
-
 
 //Chart
 class ChartData {

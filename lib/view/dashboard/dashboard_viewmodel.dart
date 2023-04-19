@@ -37,7 +37,7 @@ class DashboardViewModel extends BaseViewModel {
   }
 
   //Devolucion del selector de widget para añadir
-  String widget = "Ninguno";
+  Map<String, dynamic> widget = {};
   void addQr() {
     DashboardPanelItemLevel qr = DashboardPanelItemLevel(
         identifier: "Qr",

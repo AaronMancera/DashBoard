@@ -29,6 +29,7 @@ class AlertDialogView extends StackedView<AlertDialogViewModel> {
             onChanged: (String? value) {
               // This is called when the user selects an item.
               viewModel.widgetSelected(value!);
+              viewModel.updateWidgetEntero("Widget", value);
             },
             items: viewModel.widgestDisponibles
                 .map<DropdownMenuItem<String>>((String value) {
@@ -47,12 +48,12 @@ class AlertDialogView extends StackedView<AlertDialogViewModel> {
       ),
       actions: [
         TextButton(
-            child: const Text("Aceptar"),
             onPressed: viewModel.widgetSelecionado != "Ninguno"
                 ? () {
-                    Navigator.of(context).pop(viewModel.widgetSelecionado);
+                    Navigator.of(context).pop(viewModel.widgetEntero);
                   }
-                : null),
+                : null,
+            child: const Text("Aceptar")),
         TextButton(
             child: const Text("Cancelar"),
             onPressed: () {

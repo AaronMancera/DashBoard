@@ -24,6 +24,11 @@ class DashboardItemView extends StackedView<DashboardItemViewModel> {
   @override
   Widget builder(
       BuildContext context, DashboardItemViewModel viewModel, Widget? child) {
+    switch (viewModelPrincipal.widget["Widget"]) {
+      case "Qr":
+        viewModel.url = viewModelPrincipal.widget['Url'];
+        break;
+    }
     Map<String, Widget> widgets = {
       'Qr': BarcodeGenerator(
         viewModel: viewModel,
