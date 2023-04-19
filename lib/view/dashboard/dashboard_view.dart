@@ -6,6 +6,7 @@ import 'package:stacked/stacked.dart';
 import 'package:dashboard/dashboard.dart';
 
 import '../alert_dialog/alert_dialog_view.dart';
+import '../custom_item/custom_item_view.dart';
 
 class DashboardView extends StackedView<DashboardViewModel> {
   const DashboardView({super.key});
@@ -56,34 +57,34 @@ class DashboardView extends StackedView<DashboardViewModel> {
                               context: context,
                               builder: (context) => AlertDialogView(viewModel));
 
-                          // switch (viewModel.widget) {
-                          //   case "Qr":
-                          //     viewModel.addQr();
-                          //     break;
-                          //   case "Gauge":
-                          //     viewModel.addGauge();
-                          //     break;
-                          //   case "Cartesian":
-                          //     viewModel.addCartesianChart();
-                          //     break;
-                          //   case "Circular":
-                          //     viewModel.addCircularChart();
-                          //     break;
-                          //   case "Pyramid":
-                          //     viewModel.addPyramidChart();
-                          //     break;
-                          //   case "Funnel":
-                          //     viewModel.addFunnelChart();
-                          //     break;
-                          //   case "DateRangePicker":
-                          //     viewModel.addDateRangePicker();
-                          //     break;
-                          //   case "RadialGauge":
-                          //     viewModel.addRadialGauge();
-                          //     break;
-                          //   default:
-                          //     return;
-                          // }
+                          switch (viewModel.widget) {
+                            case "Qr":
+                              viewModel.addQr();
+                              break;
+                            case "Gauge":
+                              viewModel.addGauge();
+                              break;
+                            case "Cartesian":
+                              viewModel.addCartesianChart();
+                              break;
+                            case "Circular":
+                              viewModel.addCircularChart();
+                              break;
+                            case "Pyramid":
+                              viewModel.addPyramidChart();
+                              break;
+                            case "Funnel":
+                              viewModel.addFunnelChart();
+                              break;
+                            case "DateRangePicker":
+                              viewModel.addDateRangePicker();
+                              break;
+                            case "RadialGauge":
+                              viewModel.addRadialGauge();
+                              break;
+                            default:
+                              return;
+                          }
                         }),
                   ),
                 ],
@@ -92,7 +93,7 @@ class DashboardView extends StackedView<DashboardViewModel> {
             child: Dashboard<DashboardPanelItem>(
                 editModeSettings: EditModeSettings(resizeCursorSide: 10),
                 //Devuelve el mapa de paneles del dashboard para ser procesados por el dashboard_item_view
-                itemBuilder: (item) => DashboardItemView(item,viewModel),
+                itemBuilder: (item) => DashboardItemView(item, viewModel),
                 //Controlador del dashboard
                 dashboardItemController: viewModel.dashboardItemController)));
   }
