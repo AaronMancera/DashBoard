@@ -5,7 +5,10 @@ class DashboardItemViewModel extends BaseViewModel {
   //Lista de widgets
   List<Type> widgets = [];
   //Gauge
-  double sliderValue = 0;
+  int minimo=50;
+
+  int maximo=100;
+  double value = 0;
   List<Color> colores = [
     Colors.lightBlue,
     Colors.blue,
@@ -36,8 +39,8 @@ class DashboardItemViewModel extends BaseViewModel {
     notifyListeners();
   }
 
-  void update(double value) {
-    sliderValue = value;
+  void update(double v) {
+    value = v;
     notifyListeners();
   }
 

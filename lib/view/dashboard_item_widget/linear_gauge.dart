@@ -15,15 +15,20 @@ class LinearGauge extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SfLinearGauge(
+      minimum: viewModel.minimo.toDouble(),
+      maximum: viewModel.maximo.toDouble(),
       markerPointers: [
         LinearShapePointer(
-          value: viewModel.sliderValue,
-          onChanged: (value) => viewModel.update(value),
+          
+          value: viewModel.value,
+          onChanged: (value) {
+            viewModel.update(value);
+          },
         )
       ],
       barPointers: [
         LinearBarPointer(
-          value: viewModel.sliderValue,
+          value: viewModel.value,
           color: viewModel.color,
         )
       ],

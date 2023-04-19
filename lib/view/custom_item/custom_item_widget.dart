@@ -54,6 +54,7 @@ class CustomItemWidget extends StatelessWidget {
                 const Text("Escriba el max"),
                 TextField(
                   keyboardType: TextInputType.number,
+                  
                   onChanged: (value) {
                     value == ""
                         ? viewModel.updateMaximo(0)

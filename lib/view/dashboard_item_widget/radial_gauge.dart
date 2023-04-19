@@ -34,10 +34,10 @@ class RadialGauge extends StatelessWidget {
             startWidth: 10,
             endWidth: 10)
       ], pointers: <GaugePointer>[
-        NeedlePointer(value: viewModel.sliderValue)
+        NeedlePointer(value: viewModel.value)
       ], annotations: <GaugeAnnotation>[
         GaugeAnnotation(
-            widget: Text(viewModel.sliderValue.toStringAsFixed(2),
+            widget: Text(viewModel.value.toStringAsFixed(2),
                 style:
                     const TextStyle(fontSize: 25, fontWeight: FontWeight.bold)),
             angle: 90,

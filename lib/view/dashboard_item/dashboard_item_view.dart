@@ -27,11 +27,21 @@ class DashboardItemView extends StackedView<DashboardItemViewModel> {
     //Si esta creada desde el inciio simplmente no existe
     switch (viewModelPrincipal.widget["Widget"]) {
       case "Qr":
-        viewModel.url = viewModelPrincipal.widget['Url'];
+        viewModelPrincipal.widget['Url'] != null
+            ? viewModel.url = viewModelPrincipal.widget['Url']
+            : "";
         //Una vez que este creado se reseta
-        viewModelPrincipal.widget={};
+        viewModelPrincipal.widget = {};
         break;
-        
+      case "Gauge":
+        viewModelPrincipal.widget['Minimo'] != null
+            ? viewModel.minimo = viewModelPrincipal.widget['Minimo']
+            : "";
+        viewModelPrincipal.widget['Minimo'] != null
+            ? viewModel.maximo = viewModelPrincipal.widget['Maximo']
+            : "";
+        //  viewModel.value=viewModel.minimo.toDouble();
+        viewModelPrincipal.widget = {};
     }
     Map<String, Widget> widgets = {
       'Qr': BarcodeGenerator(
