@@ -5,9 +5,11 @@ class DashboardItemViewModel extends BaseViewModel {
   //Lista de widgets
   List<Type> widgets = [];
   //Gauge
-  double _sliderValue = 0;
-  double get sliderValue => _sliderValue;
-  final List<Color> colores = [
+  int minimo=50;
+
+  int maximo=100;
+  double value = 0;
+  List<Color> colores = [
     Colors.lightBlue,
     Colors.blue,
     Colors.yellow,
@@ -18,20 +20,17 @@ class DashboardItemViewModel extends BaseViewModel {
     Colors.teal,
     Colors.blueAccent
   ];
-  Color _color = Colors.lightBlue;
-  Color get color => _color;
+  Color color = Colors.lightBlue;
   //QR
-  final String _url = 'https://www.procisa.es/';
-  String get url => _url;
+  String url = 'https://www.procisa.es/';
   //All Chart
-  final List<ChartData> _valoresChart = [
+  List<ChartData> valoresChart = [
     ChartData('Jan', 35),
     ChartData('Feb', 28),
     ChartData('Mar', 34),
     ChartData('Apr', 32),
     ChartData('May', 40)
   ];
-  List<ChartData> get valoresChart => _valoresChart;
   //SfDateRangePicker
   String _diaSeleccionado = '';
   String get diaSeleccionado => _diaSeleccionado;
@@ -40,13 +39,13 @@ class DashboardItemViewModel extends BaseViewModel {
     notifyListeners();
   }
 
-  void update(double value) {
-    _sliderValue = value;
+  void update(double v) {
+    value = v;
     notifyListeners();
   }
 
   void changeColor(int value) {
-    _color = colores[value];
+    color = colores[value];
     notifyListeners();
   }
 }
