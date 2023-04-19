@@ -13,8 +13,8 @@ class CustomItemWidget extends StatelessWidget {
       child: Column(
         children: [
           const SizedBox(
-                  height: 10,
-                ),
+            height: 10,
+          ),
           Text("Has selecionado ${viewModel.widgetSelecionado}"),
           if (viewModel.widgetSelecionado == "Qr")
             Column(
@@ -32,6 +32,38 @@ class CustomItemWidget extends StatelessWidget {
                 Text('${viewModel.widgetEntero}')
               ],
             ),
+          if (viewModel.widgetSelecionado == "Gauge")
+            Column(
+              children: [
+                const Text("Escriba el min"),
+                const SizedBox(
+                  height: 10,
+                ),
+                TextField(
+                  keyboardType: TextInputType.number,
+                  onChanged: (value) {
+                    value == ""
+                        ? viewModel.updateMinimo(0)
+                        : viewModel.updateMinimo(int.parse(value));
+                    viewModel.updateWidgetEntero("Minimo", viewModel.minimo);
+                  },
+                ),
+                const SizedBox(
+                  height: 10,
+                ),
+                const Text("Escriba el max"),
+                TextField(
+                  keyboardType: TextInputType.number,
+                  onChanged: (value) {
+                    value == ""
+                        ? viewModel.updateMaximo(0)
+                        : viewModel.updateMaximo(int.parse(value));
+                    viewModel.updateWidgetEntero("Maximo", viewModel.maximo);
+                  },
+                ),
+                Text('${viewModel.widgetEntero}')
+              ],
+            )
         ],
       ),
     );

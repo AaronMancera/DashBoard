@@ -24,10 +24,14 @@ class DashboardItemView extends StackedView<DashboardItemViewModel> {
   @override
   Widget builder(
       BuildContext context, DashboardItemViewModel viewModel, Widget? child) {
+    //Si esta creada desde el inciio simplmente no existe
     switch (viewModelPrincipal.widget["Widget"]) {
       case "Qr":
         viewModel.url = viewModelPrincipal.widget['Url'];
+        //Una vez que este creado se reseta
+        viewModelPrincipal.widget={};
         break;
+        
     }
     Map<String, Widget> widgets = {
       'Qr': BarcodeGenerator(

@@ -33,10 +33,9 @@ class AlertDialogViewModel extends BaseViewModel {
   //   "widget":"Qr",
   //   "url":"https://google.com"
   // };
-  Map<String, dynamic> widgetEntero = {
-  };
-  void updateWidgetEntero(String clave, value){
-    widgetEntero[clave]=value;
+  Map<String, dynamic> widgetEntero = {};
+  void updateWidgetEntero(String clave, value) {
+    widgetEntero[clave] = value;
   }
 
   //QR
@@ -53,7 +52,17 @@ class AlertDialogViewModel extends BaseViewModel {
   bool enableMultiView = false;
   //LinearGauge - RadialGauge
   int minimo = 0;
-  int maximo = 0;
+  int maximo = 100;
+  void updateMinimo(int value) {
+    minimo = value;
+    notifyListeners();
+  }
+
+  void updateMaximo(int value) {
+    maximo = value;
+    notifyListeners();
+  }
+
   //LinearGauge
   List<LinearGaugeOrientation> orientacion = [
     LinearGaugeOrientation.horizontal,
