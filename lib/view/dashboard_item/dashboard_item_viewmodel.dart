@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
+import 'package:syncfusion_flutter_gauges/gauges.dart';
 
 class DashboardItemViewModel extends BaseViewModel {
   //Lista de widgets
@@ -7,10 +8,8 @@ class DashboardItemViewModel extends BaseViewModel {
   //Gauge
   int minimo=0;
   int maximo=150;
-
-
   double value = 0;
-
+  LinearGaugeOrientation orientacion = LinearGaugeOrientation.horizontal;
   
   List<Color> colores = [
     Colors.lightBlue,

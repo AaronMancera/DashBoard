@@ -17,6 +17,7 @@ class LinearGauge extends StatelessWidget {
     return SfLinearGauge(
       minimum: viewModel.minimo.toDouble(),
       maximum: viewModel.maximo.toDouble(),
+      orientation: viewModel.orientacion,
       markerPointers: [
         LinearShapePointer(
           value: viewModel.value,

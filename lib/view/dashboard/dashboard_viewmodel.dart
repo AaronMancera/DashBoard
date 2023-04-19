@@ -57,13 +57,14 @@ class DashboardViewModel extends BaseViewModel {
     notifyListeners();
   }
 
+  //TODO: Hay que poner una variable que cambie el alto de este item dependiendo si ha selecionado horizontal o vertical
   void addGauge() {
     DashboardPanelItemLevel gauge = DashboardPanelItemLevel(
         identifier: "Gauge",
-        height: 2,
+        height: 5,
         width: 8,
         minWidth: 4,
-        minHeight: 2,
+        minHeight: 5,
         panelOptions: DashboardPanelItemLevelOptions(uid: 'optionsIdentifier'));
     if (dashboardItemController.items.contains(gauge.identifier)) {
       // Ya tiene el item dentro
