@@ -29,7 +29,6 @@ class CustomItemWidget extends StatelessWidget {
                     viewModel.updateWidgetEntero("Url", value);
                   },
                 ),
-                Text('${viewModel.widgetEntero}')
               ],
             ),
           if (viewModel.widgetSelecionado == "Gauge")
@@ -76,13 +75,73 @@ class CustomItemWidget extends StatelessWidget {
                         groupValue: viewModel.valorEscogido,
                         onChanged: (value) {
                           viewModel.updateOrientacionSelecionada(value);
-                          viewModel.updateWidgetEntero("Orientacion", viewModel.orientacionSelecionada);
+                          viewModel.updateWidgetEntero(
+                              "Orientacion", viewModel.orientacionSelecionada);
                         }),
                   ),
                 ),
-                Text('${viewModel.widgetEntero}')
               ],
-            )
+            ),
+          if (viewModel.widgetSelecionado == "Cartesian")
+            Column(
+              children: [
+                const SizedBox(
+                  height: 10,
+                ),
+                const Text("Valor X:"),
+                TextField(
+                  keyboardType: TextInputType.number,
+                  onChanged: (value) {
+                    value == ""
+                        ? viewModel.updateX("")
+                        : viewModel.updateX(value);
+                    // ChartData chartData=ChartData(x, y)
+                  },
+                ),
+                const Text("Valor Y:"),
+                TextField(
+                  keyboardType: TextInputType.number,
+                  onChanged: (value) {
+                    value == ""
+                        ? viewModel.updateY(0)
+                        : viewModel.updateY(int.parse(value));
+                    //
+                  },
+                ),
+                TextButton(
+                    onPressed: () {
+                      ChartData chartData =
+                          ChartData(viewModel.x, viewModel.y.toDouble());
+                      viewModel.x = "";
+                      viewModel.y = 0;
+                      viewModel.updateValoresChart(chartData);
+                      viewModel.updateWidgetEntero(
+                          "Valores", viewModel.valoresChart);
+                    },
+                    child: const Icon(Icons.plus_one)),
+                if (viewModel.widgetEntero.containsKey("Valores"))
+                  Column(
+                    children: [
+                      const Text("Lista de valores:"),
+                      Column(
+                        children: List.generate(
+                          viewModel.widgetEntero["Valores"].length,
+                          (index) => Row(children: [
+                            Text(
+                                "X: ${viewModel.widgetEntero["Valores"][index].x}"),
+                            SizedBox(width: 10,),
+                            Text(
+                                "Y: ${viewModel.widgetEntero["Valores"][index].y}"),
+                          ]),
+                        ),
+                      ),
+                    ],
+                  ),
+              ],
+            ),
+
+          //TODO: Eliminar cuando se acaben las pruebas
+          Text('${viewModel.widgetEntero}')
         ],
       ),
     );

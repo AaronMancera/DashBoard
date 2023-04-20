@@ -75,12 +75,6 @@ class AlertDialogViewModel extends BaseViewModel {
         : orientacionSelecionada = LinearGaugeOrientation.vertical;
         notifyListeners();
   }
-  //TODO: Aun falta todo lo de abajo
-  List<LinearGaugeRange> rangosLinear = [];
-  bool markerPointer = false;
-  int valorPointer = 0;
-  bool linearBarPointer = false;
-  int valorBarPinter = 0;
 
   //RadialGauge
 
@@ -90,7 +84,18 @@ class AlertDialogViewModel extends BaseViewModel {
     notifyListeners();
   }
 
-  //Actualizacion de los valores para los chart
+
+  //Actualizacion de los valores para los chart - Cartesian
+  String x="";
+  int y=0;
+  void updateX(value){
+    x=value;
+    notifyListeners();
+  }
+  void updateY(value){
+    y=value;
+    notifyListeners();
+  }
   void updateValoresChart(ChartData chartData) {
     valoresChart.add(chartData);
     notifyListeners();
@@ -100,36 +105,6 @@ class AlertDialogViewModel extends BaseViewModel {
   void updateEnableMultiView(bool opcion) {
     enableMultiView = opcion;
     notifyListeners();
-  }
-
-  //NOTE: Actualizar configuracion para el LinearGauge
-  //Añade rango personalizado con colores y todo - LinearGaugeRange(startValue: 0, endValue: 50, color: Colors.green),
-  void updateLinearGaugeRange(LinearGaugeRange linearGaugeRange) {
-    rangosLinear.add(linearGaugeRange);
-    notifyListeners();
-  }
-
-  //Activar la opcion de que aparezca el pmarkerpointer
-  void updateMarkerPointer(bool opcion) {
-    markerPointer = opcion;
-    notifyListeners();
-  }
-
-  //Asignaer el valor
-  void updateValorPointer(valor) {
-    valorPointer = valor;
-    notifyListeners();
-  }
-
-  //Activar la opcion de que aparezca un bar coloreado
-  void updateLinearBarPointer(bool opcion) {
-    linearBarPointer = opcion;
-    notifyListeners();
-  }
-
-  //Valor del bar
-  void updatevalorBarPinter(valor) {
-    valorBarPinter = valor;
   }
 }
 
