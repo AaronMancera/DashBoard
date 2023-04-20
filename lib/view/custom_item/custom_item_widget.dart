@@ -259,7 +259,61 @@ class CustomItemWidget extends StatelessWidget {
             ),
           if (viewModel.widgetSelecionado == "Funnel")
             Column(
-              children: const [Text("Funnel")],
+              children: [
+                const SizedBox(
+                  height: 10,
+                ),
+                const Text("Valor X (String):"),
+                TextField(
+                  keyboardType: TextInputType.number,
+                  onChanged: (value) {
+                    value == ""
+                        ? viewModel.updateX("")
+                        : viewModel.updateX(value);
+                  },
+                ),
+                const Text("Valor Y (Int):"),
+                TextField(
+                  keyboardType: TextInputType.number,
+                  onChanged: (value) {
+                    value == ""
+                        ? viewModel.updateY(0)
+                        : viewModel.updateY(int.parse(value));
+                  },
+                ),
+                TextButton(
+                    onPressed: () {
+                      ChartData chartData =
+                          ChartData(viewModel.x, viewModel.y.toDouble());
+                      viewModel.x = "";
+                      viewModel.y = 0;
+                      viewModel.updateValoresChart(chartData);
+                      viewModel.updateWidgetEntero(
+                          "Valores", viewModel.valoresChart);
+                    },
+                    child: const Icon(Icons.plus_one)),
+                //Mostrar los valores
+                if (viewModel.widgetEntero.containsKey("Valores"))
+                  Column(
+                    children: [
+                      const Text("Lista de valores:"),
+                      Column(
+                        children: List.generate(
+                          viewModel.widgetEntero["Valores"].length,
+                          (index) => Row(children: [
+                            Text(
+                                "X: ${viewModel.widgetEntero["Valores"][index].x}"),
+                            const SizedBox(
+                              width: 10,
+                            ),
+                            Text(
+                                "Y: ${viewModel.widgetEntero["Valores"][index].y}"),
+                          ]),
+                        ),
+                      ),
+                    ],
+                  ),
+              ],
             ),
           if (viewModel.widgetSelecionado == "DateRangePicker")
             Column(

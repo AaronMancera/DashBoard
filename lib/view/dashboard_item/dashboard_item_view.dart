@@ -57,6 +57,11 @@ class DashboardItemView extends StackedView<DashboardItemViewModel> {
             ? viewModel.updateValores(viewModelPrincipal.widget['Valores'])
             : "";
         break;
+      case "Funnel":
+        viewModelPrincipal.widget['Valores'] != null
+            ? viewModel.updateValores(viewModelPrincipal.widget['Valores'])
+            : "";
+        break;
     }
     Map<String, Widget> widgets = {
       'Qr': BarcodeGenerator(
