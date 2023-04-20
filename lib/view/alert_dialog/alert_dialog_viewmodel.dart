@@ -2,6 +2,8 @@ import 'package:stacked/stacked.dart';
 import 'package:syncfusion_flutter_datepicker/datepicker.dart';
 import 'package:syncfusion_flutter_gauges/gauges.dart';
 
+import '../../data/model/chart_data.dart';
+
 class AlertDialogViewModel extends BaseViewModel {
   //Todos los nombres/identificadores de widgets estan aqui
   String widgetSelecionado = "Ninguno";
@@ -108,9 +110,3 @@ class AlertDialogViewModel extends BaseViewModel {
   }
 }
 
-//Chart
-class ChartData {
-  ChartData(this.x, this.y);
-  final String x;
-  final double? y;
-}

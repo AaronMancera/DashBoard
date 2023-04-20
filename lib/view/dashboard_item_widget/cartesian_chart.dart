@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
 
+import '../../data/model/chart_data.dart';
 import '../dashboard_item/dashboard_item_viewmodel.dart';
 
 class CartesianChart extends StatelessWidget {

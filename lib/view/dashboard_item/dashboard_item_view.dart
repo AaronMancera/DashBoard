@@ -42,6 +42,11 @@ class DashboardItemView extends StackedView<DashboardItemViewModel> {
             ? viewModel.orientacion = viewModelPrincipal.widget['Orientacion']
             : "";
         break;
+      case "Cartesian":
+        viewModelPrincipal.widget['Valores'] != null
+            ? viewModel.updateValores(viewModelPrincipal.widget['Valores'])
+            : "";
+        break;
     }
     Map<String, Widget> widgets = {
       'Qr': BarcodeGenerator(
