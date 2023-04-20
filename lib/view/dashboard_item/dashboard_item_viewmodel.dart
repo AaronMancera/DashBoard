@@ -28,7 +28,7 @@ class DashboardItemViewModel extends BaseViewModel {
   //QR
   String url = 'https://www.procisa.es/';
   //All Chart
-
+  //Valores por defecto
   List<ChartData> valoresChart = [
     ChartData('Jan', 35),
     ChartData('Feb', 28),
@@ -42,10 +42,9 @@ class DashboardItemViewModel extends BaseViewModel {
     notifyListeners();
   }
   //SfDateRangePicker
-  String _diaSeleccionado = '';
-  String get diaSeleccionado => _diaSeleccionado;
+  String diaSeleccionado = '';
   void updateDiaSeleccionado(String value) {
-    _diaSeleccionado = value;
+    diaSeleccionado = value;
     notifyListeners();
   }
 
@@ -59,5 +58,3 @@ class DashboardItemViewModel extends BaseViewModel {
     notifyListeners();
   }
 }
-
-//CartesianChart
