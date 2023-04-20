@@ -95,7 +95,6 @@ class CustomItemWidget extends StatelessWidget {
                     value == ""
                         ? viewModel.updateX("")
                         : viewModel.updateX(value);
-                    // ChartData chartData=ChartData(x, y)
                   },
                 ),
                 const Text("Valor Y:"),
@@ -105,7 +104,6 @@ class CustomItemWidget extends StatelessWidget {
                     value == ""
                         ? viewModel.updateY(0)
                         : viewModel.updateY(int.parse(value));
-                    //
                   },
                 ),
                 TextButton(
@@ -119,6 +117,7 @@ class CustomItemWidget extends StatelessWidget {
                           "Valores", viewModel.valoresChart);
                     },
                     child: const Icon(Icons.plus_one)),
+                //Mostrar los valores
                 if (viewModel.widgetEntero.containsKey("Valores"))
                   Column(
                     children: [
@@ -129,7 +128,9 @@ class CustomItemWidget extends StatelessWidget {
                           (index) => Row(children: [
                             Text(
                                 "X: ${viewModel.widgetEntero["Valores"][index].x}"),
-                            SizedBox(width: 10,),
+                            const SizedBox(
+                              width: 10,
+                            ),
                             Text(
                                 "Y: ${viewModel.widgetEntero["Valores"][index].y}"),
                           ]),
@@ -137,6 +138,36 @@ class CustomItemWidget extends StatelessWidget {
                       ),
                     ],
                   ),
+              ],
+            ),
+            if (viewModel.widgetSelecionado == "Circular")
+            Column(
+              children: const [
+                Text("Circular")
+              ],
+            ),
+            if (viewModel.widgetSelecionado == "Pyramid")
+            Column(
+              children: const [
+                Text("Pyramid")
+              ],
+            ),
+            if (viewModel.widgetSelecionado == "Funnel")
+            Column(
+              children: const [
+                Text("Funnel")
+              ],
+            ),
+            if (viewModel.widgetSelecionado == "DateRangePicker")
+            Column(
+              children: const [
+                Text("DateRangePicker")
+              ],
+            ),
+            if (viewModel.widgetSelecionado == "RadialGauge")
+            Column(
+              children: const [
+                Text("RadialGauge")
               ],
             ),
 
