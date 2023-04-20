@@ -141,10 +141,10 @@ class DashboardViewModel extends BaseViewModel {
   void addDateRangePicker() {
     DashboardPanelItemLevel dateRangePicker = DashboardPanelItemLevel(
         identifier: "DateRangePicker",
-        height: 3,
+        height: 4,
         width: 4,
         minWidth: 4,
-        minHeight: 3,
+        minHeight: 4,
         panelOptions: DashboardPanelItemLevelOptions(uid: 'optionsIdentifier'));
     if (dashboardItemController.items.contains(dateRangePicker.identifier)) {
       // Ya tiene el item dentro
