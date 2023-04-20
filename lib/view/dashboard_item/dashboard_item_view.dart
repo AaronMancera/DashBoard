@@ -62,6 +62,14 @@ class DashboardItemView extends StackedView<DashboardItemViewModel> {
             ? viewModel.updateValores(viewModelPrincipal.widget['Valores'])
             : "";
         break;
+        case "DateRangePicker":
+        viewModelPrincipal.widget['DiaSeleccionado'] != null
+            ? viewModel.rangoDiaEscogido= viewModelPrincipal.widget['DiaSeleccionado']
+            : "";
+        viewModelPrincipal.widget['MultiView'] != null
+            ? viewModel.multiview= viewModelPrincipal.widget['MultiView']
+            : "";
+        break;
     }
     Map<String, Widget> widgets = {
       'Qr': BarcodeGenerator(

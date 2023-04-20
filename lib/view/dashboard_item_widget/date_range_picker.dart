@@ -22,9 +22,9 @@ class DateRangePicker extends StatelessWidget {
         Text('El dia selecionado: ${viewModel.diaSeleccionado}'),
         SfDateRangePicker(
           onSelectionChanged: onSelectionChanged,
-          view: DateRangePickerView.month,
+          view: viewModel.rangoDiaEscogido,
           showTodayButton: true,
-          enableMultiView: true,
+          enableMultiView: viewModel.multiview,
         ),
       ],
     );

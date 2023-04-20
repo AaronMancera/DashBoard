@@ -123,8 +123,7 @@ class AlertDialogViewModel extends BaseViewModel {
         rangoDiaescogido = DateRangePickerView.month;
         break;
     }
-    print(rangoDiaSeleccionado);
-    print(rangoDiaescogido);
+
     notifyListeners();
   }
 

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
+import 'package:syncfusion_flutter_datepicker/datepicker.dart';
 import 'package:syncfusion_flutter_gauges/gauges.dart';
 
 import '../../data/model/chart_data.dart';
@@ -37,11 +38,17 @@ class DashboardItemViewModel extends BaseViewModel {
     ChartData('May', 40)
   ];
   void updateValores(List<ChartData> v) {
-    valoresChart=[];
-    valoresChart=v;
+    valoresChart = [];
+    valoresChart = v;
     notifyListeners();
   }
+
   //SfDateRangePicker
+  DateRangePickerView rangoDiaEscogido = DateRangePickerView.month;
+
+  bool multiview=false;
+
+
   String diaSeleccionado = '';
   void updateDiaSeleccionado(String value) {
     diaSeleccionado = value;
