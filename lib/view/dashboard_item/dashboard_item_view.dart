@@ -52,6 +52,11 @@ class DashboardItemView extends StackedView<DashboardItemViewModel> {
             ? viewModel.updateValores(viewModelPrincipal.widget['Valores'])
             : "";
         break;
+      case "Pyramid":
+        viewModelPrincipal.widget['Valores'] != null
+            ? viewModel.updateValores(viewModelPrincipal.widget['Valores'])
+            : "";
+        break;
     }
     Map<String, Widget> widgets = {
       'Qr': BarcodeGenerator(
