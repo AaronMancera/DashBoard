@@ -10,6 +10,7 @@ class CustomItemWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
     return Container(
       child: Column(
         children: [
@@ -317,7 +318,35 @@ class CustomItemWidget extends StatelessWidget {
             ),
           if (viewModel.widgetSelecionado == "DateRangePicker")
             Column(
-              children: const [Text("DateRangePicker")],
+              children: [
+                Column(
+                  children: List.generate(
+                    viewModel.rangosDias.length,
+                    (index) => RadioListTile(
+                        title: Text(viewModel.rangosDias[index]),
+                        value: viewModel.rangosDias[index],
+                        groupValue: viewModel.rangoDiaSeleccionado,
+                        onChanged: (value) {
+                          viewModel.updaterangoDiaSelecionado(value!);
+                          viewModel.widgetEntero["DiaSeleccionado"] =
+                              viewModel.rangoDiaescogido;
+                        }),
+                  ),
+                ),
+                Row(
+                  children: [
+                    Checkbox(
+                      value: viewModel.enableMultiView,
+                      onChanged: (value) {
+                        viewModel.updateEnableMultiView(value!);
+                        viewModel.widgetEntero["MultiView"] =
+                            viewModel.enableMultiView;
+                      },
+                    ),
+                    const Text("Habilitar multivista")
+                  ],
+                )
+              ],
             ),
           if (viewModel.widgetSelecionado == "RadialGauge")
             Column(
