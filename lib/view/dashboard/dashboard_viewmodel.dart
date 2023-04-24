@@ -3,23 +3,20 @@ import 'package:niveles_formacion/data/model/dashboard_panel_item/dashboard_pane
 import 'package:niveles_formacion/data/model/dashboard_panel_item_level/dashboard_panel_item_level.dart';
 import 'package:niveles_formacion/data/model/dashboard_panel_item_level/dashboard_panel_item_level_options.dart';
 import 'package:stacked/stacked.dart';
-import 'package:uuid/uuid.dart';
 
 class DashboardViewModel extends BaseViewModel {
-  //Generador de claves
-  static var uuid = Uuid();
   //XXX: Si no se inicializa con un item da fallo
   final DashboardItemController<DashboardPanelItem> dashboardItemController =
       DashboardItemController(items: [
     DashboardPanelItemLevel(
-        identifier: uuid.v4(),
+        identifier: "Qr",
         height: 5,
         width: 3,
         //Para el valor minimo de alto y ancho es desde la clase DashboardPanelItemLevel y DashboardPanelItem
         minHeight: 4,
         minWidth: 2,
         panelOptions: DashboardPanelItemLevelOptions(
-          uid: 'Qr',
+          uid: 'optionsIdentifier',
         )),
   ]);
   //Menu desplegable
@@ -40,18 +37,17 @@ class DashboardViewModel extends BaseViewModel {
   }
 
   //Devolucion del selector de widget para añadir
-  //TODO: Al generar dos del mismo utilizan el mismo viewmodel lo que genera que ambos cambies y no haya uno unico
   Map<String, dynamic> widget = {};
   void addQr() {
     DashboardPanelItemLevel qr = DashboardPanelItemLevel(
-        identifier: uuid.v4(),
+        identifier: "Qr",
         height: 5,
         width: 3,
         //Para el valor minimo de alto y ancho es desde la clase DashboardPanelItemLevel y DashboardPanelItem
         minHeight: 4,
         minWidth: 2,
         panelOptions: DashboardPanelItemLevelOptions(
-          uid: 'Qr',
+          uid: 'optionsIdentifier',
         ));
     if (dashboardItemController.items.contains(qr.identifier)) {
       // Ya tiene el item dentro
@@ -61,7 +57,7 @@ class DashboardViewModel extends BaseViewModel {
     notifyListeners();
   }
 
-
+  //TODO: Hay que poner una variable que cambie el alto de este item dependiendo si ha selecionado horizontal o vertical
   void addGauge() {
     DashboardPanelItemLevel gauge = DashboardPanelItemLevel(
         identifier: "Gauge",
