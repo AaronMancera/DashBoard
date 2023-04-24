@@ -154,6 +154,7 @@ class DashboardViewModel extends BaseViewModel {
     notifyListeners();
   }
 
+  //No se utiliza
   void addRadialGauge() {
     DashboardPanelItemLevel radialGauge = DashboardPanelItemLevel(
         identifier: "RadialGauge",

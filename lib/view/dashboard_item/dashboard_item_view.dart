@@ -91,9 +91,9 @@ class DashboardItemView extends StackedView<DashboardItemViewModel> {
       'DateRangePicker': DateRangePicker(
         viewModel: viewModel,
       ),
-      'RadialGauge': RadialGauge(
-        viewModel: viewModel,
-      )
+      // 'RadialGauge': RadialGauge(
+      //   viewModel: viewModel,
+      // )
     };
 
     return Scaffold(
@@ -169,17 +169,18 @@ class DashboardItemView extends StackedView<DashboardItemViewModel> {
               Container(
                 child: widgets[item.identifier],
               ),
-            if (item.identifier == 'RadialGauge')
-              Column(
-                children: [
-                  Container(
-                    child: widgets["Gauge"],
-                  ),
-                  Container(
-                    child: widgets[item.identifier],
-                  ),
-                ],
-              ),
+            //No se utiliza este widget
+            // if (item.identifier == 'RadialGauge')
+            //   Column(
+            //     children: [
+            //       Container(
+            //         child: widgets["Gauge"],
+            //       ),
+            //       Container(
+            //         child: widgets[item.identifier],
+            //       ),
+            //     ],
+            //   ),
           ],
         ),
       ),
