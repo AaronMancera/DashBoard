@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:syncfusion_flutter_gauges/gauges.dart';
 
 import '../dashboard_item/dashboard_item_viewmodel.dart';
-
+//No se utiliza este widget
 class RadialGauge extends StatelessWidget {
   final DashboardItemViewModel viewModel;
 

@@ -16,7 +16,7 @@ class AlertDialogViewModel extends BaseViewModel {
     'Pyramid',
     'Funnel',
     'DateRangePicker',
-    'RadialGauge'
+    // 'RadialGauge'
   ];
   //Se actualiza el widget selecionado
   void widgetSelected(String value) {
