@@ -25,11 +25,11 @@ class AlertDialogViewModel extends BaseViewModel {
   }
 
   //Muestra unicamente aquellos que aun no estan mostrandose en pantalla
-  void restantes(List<String> valores) {
-    widgestDisponibles.removeWhere((element) => valores.contains(element));
-  }
 
-  //TODO: Customizacion de wigets
+  // void restantes(List<String> valores) {
+  //   widgestDisponibles.removeWhere((element) => valores.contains(element));
+  // }
+
   //Mapa con el nombre y los parametros de customizacion
   // Map <String,dynamic> widgetEntero = {
   //   "widget":"Qr",
