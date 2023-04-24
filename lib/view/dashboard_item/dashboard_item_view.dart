@@ -140,9 +140,9 @@ class DashboardItemView extends StackedView<DashboardItemViewModel> {
               height: 10,
             ),
             //Muestra el contenido dependiendo del identificador
-            if (item.identifier == 'Qr')
+            if (item.panelOptions.uid == 'Qr')
               Container(
-                child: widgets[item.identifier],
+                child: widgets[item.panelOptions.uid],
               ),
             if (item.identifier == 'Gauge')
               Container(

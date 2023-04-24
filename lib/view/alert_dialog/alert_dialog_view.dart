@@ -12,7 +12,7 @@ class AlertDialogView extends StackedView<AlertDialogViewModel> {
   @override
   Widget builder(
       BuildContext context, AlertDialogViewModel viewModel, Widget? child) {
-    viewModel.restantes(dashboardViewModel.dashboardItemController.items);
+    // viewModel.restantes(dashboardViewModel.dashboardItemController.items);
     return AlertDialog(
       title: const Text('Selector de widget'),
       content: Column(
